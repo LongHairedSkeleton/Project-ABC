@@ -24,20 +24,23 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -15.0
 margin_top = -10.0
-margin_right = -15.0
+margin_right = 2.0
 margin_bottom = -10.0
 script = ExtResource( 1 )
+problem_type = 1
 
 [node name="TextureRect" type="TextureRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = 32.0
+margin_left = -117.0
+margin_right = 157.0
 texture = ExtResource( 2 )
 expand = true
 
 [node name="TextureRect" type="TextureRect" parent="TextureRect"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_right = 4.0
 texture = ExtResource( 4 )
 expand = true
 stretch_mode = 2
@@ -54,41 +57,75 @@ scale = Vector2( 1.60478, 1.60513 )
 texture = ExtResource( 3 )
 
 [node name="Label" type="Label" parent="TextureRect"]
-margin_left = 354.0
-margin_top = 463.0
-margin_right = 609.0
-margin_bottom = 569.0
+margin_left = 156.0
+margin_top = 226.0
+margin_right = 804.0
+margin_bottom = 756.0
 custom_fonts/font = SubResource( 2 )
 text = "conta"
+autowrap = true
 
-[node name="Label2" type="Label" parent="TextureRect"]
-margin_left = 128.0
-margin_top = 783.0
-margin_right = 544.0
-margin_bottom = 889.0
+[node name="Button" type="Button" parent="TextureRect"]
+margin_left = 147.0
+margin_top = 789.0
+margin_right = 491.0
+margin_bottom = 915.0
+
+[node name="Label2" type="Label" parent="TextureRect/Button"]
+margin_left = -19.0
+margin_top = -6.0
+margin_right = 397.0
+margin_bottom = 100.0
 custom_fonts/font = SubResource( 4 )
 text = "resultado"
+align = 1
 
-[node name="Label3" type="Label" parent="TextureRect"]
-margin_left = 464.0
+[node name="Button2" type="Button" parent="TextureRect"]
+margin_left = 510.0
+margin_top = 793.0
+margin_right = 855.0
+margin_bottom = 915.0
+
+[node name="Label5" type="Label" parent="TextureRect/Button2"]
+margin_left = -34.0
+margin_top = -6.0
+margin_right = 382.0
+margin_bottom = 100.0
+custom_fonts/font = SubResource( 4 )
+text = "resultado"
+align = 1
+
+[node name="Button3" type="Button" parent="TextureRect"]
+margin_left = 140.0
 margin_top = 929.0
-margin_right = 880.0
-margin_bottom = 1035.0
-custom_fonts/font = SubResource( 4 )
-text = "resultado"
+margin_right = 503.0
+margin_bottom = 1063.0
 
-[node name="Label4" type="Label" parent="TextureRect"]
-margin_left = 123.0
-margin_top = 932.0
-margin_right = 539.0
-margin_bottom = 1038.0
+[node name="Label4" type="Label" parent="TextureRect/Button3"]
+margin_left = -17.0
+margin_top = 3.0
+margin_right = 399.0
+margin_bottom = 109.0
 custom_fonts/font = SubResource( 4 )
 text = "resultado"
+align = 1
 
-[node name="Label5" type="Label" parent="TextureRect"]
-margin_left = 469.0
-margin_top = 790.0
-margin_right = 885.0
-margin_bottom = 896.0
+[node name="Button4" type="Button" parent="TextureRect"]
+margin_left = 517.0
+margin_top = 936.0
+margin_right = 861.0
+margin_bottom = 1065.0
+
+[node name="Label3" type="Label" parent="TextureRect/Button4"]
+margin_left = -53.0
+margin_top = -7.0
+margin_right = 363.0
+margin_bottom = 99.0
 custom_fonts/font = SubResource( 4 )
 text = "resultado"
+align = 1
+
+[connection signal="pressed" from="TextureRect/Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="TextureRect/Button2" to="." method="_on_Button2_pressed"]
+[connection signal="pressed" from="TextureRect/Button3" to="." method="_on_Button3_pressed"]
+[connection signal="pressed" from="TextureRect/Button4" to="." method="_on_Button4_pressed"]
