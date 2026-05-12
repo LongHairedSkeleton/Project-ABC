@@ -10,7 +10,7 @@ config_version=4
 
 [application]
 
-config/name="WalterWhite"
+config/name="EDU Simples"
 config/icon="res://icon.png"
 
 [display]
