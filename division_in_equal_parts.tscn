@@ -1,0 +1,69 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://drag_and_drop_section.gd" type="Script" id=1]
+[ext_resource path="res://points_manager.gd" type="Script" id=2]
+[ext_resource path="res://collision_code.gd" type="Script" id=3]
+[ext_resource path="res://base_font_theme.tres" type="Theme" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 225.5, 113.5 )
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 1 )
+
+[node name="PointsManager" type="Node" parent="."]
+script = ExtResource( 2 )
+
+[node name="Area2D" type="Area2D" parent="." groups=["side1"]]
+script = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 347.5, 352 )
+shape = SubResource( 1 )
+
+[node name="Collision1" type="ColorRect" parent="Area2D"]
+margin_left = 121.5
+margin_top = 236.0
+margin_right = 570.5
+margin_bottom = 468.0
+mouse_filter = 1
+color = Color( 1, 0, 0, 1 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Area2D"]
+margin_left = 192.0
+margin_top = 266.0
+margin_right = 475.0
+margin_bottom = 419.0
+theme = ExtResource( 4 )
+text = "0"
+
+[node name="Area2D2" type="Area2D" parent="." groups=["side2"]]
+script = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+position = Vector2( 345, 1077 )
+shape = SubResource( 1 )
+
+[node name="Collision1" type="ColorRect" parent="Area2D2"]
+margin_left = 122.0
+margin_top = 955.0
+margin_right = 571.0
+margin_bottom = 1187.0
+mouse_filter = 1
+color = Color( 1, 0, 0, 1 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Area2D2"]
+margin_left = 170.0
+margin_top = 978.0
+margin_right = 453.0
+margin_bottom = 1131.0
+theme = ExtResource( 4 )
+text = "0"
+
+[connection signal="area_entered" from="Area2D" to="Area2D" method="_on_Area2D_area_entered"]
+[connection signal="points" from="Area2D" to="PointsManager" method="_on_Area2D_points"]
+[connection signal="area_entered" from="Area2D2" to="Area2D2" method="_on_Area2D_area_entered"]
+[connection signal="points" from="Area2D2" to="PointsManager" method="_on_Area2D2_points"]
