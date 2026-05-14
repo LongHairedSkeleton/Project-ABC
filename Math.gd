@@ -1,8 +1,10 @@
 extends Control
 
 var resultado_final = 0
-enum types {simple, problems, simple_plus}
+enum types {simple, problems, simple_plus, times}
 export (types) var problem_type = types.simple
+
+var amount_of_numbers = 2
 
 func _ready():
 	randomize() # Call once at the start
@@ -13,6 +15,8 @@ func roll():
 	var label2 = $TextureRect/Button2/Label5
 	var label3 = $TextureRect/Button3/Label4
 	var label4 = $TextureRect/Button4/Label3
+	
+	var labels = [label1, label2, label3, label4]
 
 	var Number1 = (randi() % 10) + 1
 	var Number2 = (randi() % 10) + 1
@@ -27,8 +31,6 @@ func roll():
 		Sinais = ["+", "-", "×", "÷"]
 		SinalSorteado = Sinais[randi() % Sinais.size()]
 
-		$TextureRect/Label.text = str(Number1) + " " + SinalSorteado + " " + str(Number2)
-
 	if SinalSorteado == "+":
 		resultado_final = Number1 + Number2
 	if SinalSorteado == "-":
@@ -42,8 +44,11 @@ func roll():
 			Number2 = (randi() % 10) + 1
 		
 		# Atualiza o texto da Label com os novos números válidos
-		$TextureRect/Label.text = str(Number1) + " " + SinalSorteado + " " + str(Number2)
 		resultado_final = Number1 / Number2
+
+	elif problem_type == types.times:
+		SinalSorteado = "+"
+		Number2 = Number1
 
 	elif problem_type == types.problems:
 		# Define problems with their math type
@@ -115,15 +120,24 @@ func roll():
 		# Now apply the numbers to the template
 		$TextureRect/Label.text = choice["text"] % [str(Number1), str(Number2)]
 
-	label1.text = str(resultado_final + (randi() % 21) - 10)
-	label2.text = str(resultado_final + (randi() % 21) - 10)
-	label3.text = str(resultado_final + (randi() % 21) - 10)
-	label4.text = str(resultado_final + (randi() % 21) - 10)
+	if problem_type != types.times:
+		for label_node in labels:
+			label_node.text = str(resultado_final + (randi() % 21) - 10)
+	else:
+		for label_node in labels:
+			var rng = (randi() % 10)
+			label_node.text = str(rng) + "×" + str(rng)
 
 	# Overwrite one label with the correct answer
 	var possible_labels = [label1, label2, label3, label4]
 	var selected_to_be_right = possible_labels[randi() % possible_labels.size()]
-	selected_to_be_right.text = str(resultado_final) # Removed the " = "
+	if problem_type != types.times or problem_type != types.problems:
+		selected_to_be_right.text = str(resultado_final)
+	if problem_type == types.times:
+		selected_to_be_right.text = str(Number1) + "×" + str(amount_of_numbers)
+
+	if problem_type != types.problems:
+		$TextureRect/Label.text = str(Number1) + " " + SinalSorteado + " " + str(Number2)
 
 func check_if_correct(label):
 	# Now this will compare "5" == "5" instead of " = 5" == "0"

@@ -27,7 +27,7 @@ margin_top = -10.0
 margin_right = 2.0
 margin_bottom = -10.0
 script = ExtResource( 1 )
-problem_type = 2
+problem_type = 1
 
 [node name="TextureRect" type="TextureRect" parent="."]
 anchor_right = 1.0
@@ -57,10 +57,10 @@ scale = Vector2( 1.60478, 1.60513 )
 texture = ExtResource( 3 )
 
 [node name="Label" type="Label" parent="TextureRect"]
-margin_left = 156.0
-margin_top = 226.0
-margin_right = 804.0
-margin_bottom = 756.0
+margin_left = 141.0
+margin_top = -1.0
+margin_right = 789.0
+margin_bottom = 529.0
 custom_fonts/font = SubResource( 2 )
 text = "conta"
 autowrap = true
