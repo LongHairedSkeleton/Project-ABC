@@ -23,6 +23,8 @@ window/stretch/aspect="keep"
 [gui]
 
 common/drop_mouse_on_gui_input_disabled=true
+theme/custom="res://base_font_theme.tres"
+theme/custom_font="res://base_font_theme.tres"
 
 [physics]
 

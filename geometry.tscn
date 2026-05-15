@@ -1,0 +1,49 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://geometry.gd" type="Script" id=1]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Node" type="Node" parent="."]
+script = ExtResource( 1 )
+
+[node name="Button" type="Button" parent="Node"]
+margin_left = 254.0
+margin_top = 723.0
+margin_right = 332.0
+margin_bottom = 824.0
+text = "more"
+
+[node name="Button2" type="Button" parent="Node"]
+margin_left = 261.0
+margin_top = 854.0
+margin_right = 328.0
+margin_bottom = 955.0
+text = "less"
+
+[node name="Button3" type="Button" parent="Node"]
+margin_left = 506.0
+margin_top = 740.0
+margin_right = 676.0
+margin_bottom = 915.0
+text = "enter"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Node"]
+margin_left = 397.0
+margin_top = 782.0
+margin_right = 465.0
+margin_bottom = 889.0
+text = "0"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+margin_left = 26.0
+margin_top = 452.0
+margin_right = 684.0
+margin_bottom = 680.0
+text = "type"
+
+[connection signal="pressed" from="Node/Button" to="Node" method="_on_Button_pressed"]
+[connection signal="pressed" from="Node/Button2" to="Node" method="_on_Button2_pressed"]
+[connection signal="pressed" from="Node/Button3" to="Node" method="_on_Button3_pressed"]

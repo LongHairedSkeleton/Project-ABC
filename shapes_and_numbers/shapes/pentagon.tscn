@@ -1,0 +1,4 @@
+[gd_scene format=2]
+
+[node name="Line2D" type="Line2D"]
+points = PoolVector2Array( 211, 331, 337, 270, 447, 330, 437, 506, 230, 503, 213, 330 )
