@@ -1,4 +1,7 @@
 extends Area2D
+class_name drag_queen
+
+export var texture: Texture
 
 var is_dragging = false
 var grab_offset = Vector2()
@@ -6,6 +9,15 @@ var grab_offset = Vector2()
 func _ready():
 	randomize()
 	position += Vector2(rand_range(-50, 50), rand_range(-50, 50))
+
+	var sprite = Sprite.new()
+	sprite.texture = texture
+	add_child(sprite)
+
+	var collision = CollisionShape2D.new()
+	add_child(collision)
+	collision.shape = CircleShape2D.new()
+	collision.shape.radius = 25
 
 func _input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT:
@@ -29,8 +41,3 @@ func _input(event):
 func _process(delta):
 	if is_dragging:
 		global_position = get_global_mouse_position() + grab_offset
-
-func _exit_tree():
-	# If this specific ball was being dragged when it died, unlock the parent
-	if is_dragging:
-		get_parent().is_any_item_dragging = false

@@ -71,10 +71,13 @@ func update_label(amount):
 
 func check_if_right():
 	if target_value == label_value:
-		print("win")
+		var right = preload("res://right.tscn")
+		var right_instance = right.instance()
+		add_child(right_instance)
 	else:
-		print("lose")
-		print("it was" + str(target_value))
+		var wrong = preload("res://wrong.tscn")
+		var wrong_instance = wrong.instance()
+		add_child(wrong_instance)
 	roll()
 
 func _input(event):

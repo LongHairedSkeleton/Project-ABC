@@ -4,3 +4,4 @@
 position = Vector2( -325.385, 0 )
 scale = Vector2( 1.96923, 1 )
 points = PoolVector2Array( 225, 251, 465, 251, 465, 447, 226, 447, 225, 251 )
+default_color = Color( 0.117647, 0.341176, 0.611765, 1 )

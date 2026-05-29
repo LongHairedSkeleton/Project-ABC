@@ -8,17 +8,47 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Area2D",
+"class": "drag_queen",
+"language": "GDScript",
+"path": "res://actividades/sorting/dragging_base.gd"
+}, {
+"base": "Area2D",
+"class": "hole",
+"language": "GDScript",
+"path": "res://actividades/geometry/shape_hole.gd"
+}, {
+"base": "Control",
+"class": "spawner",
+"language": "GDScript",
+"path": "res://spawner_of_draggables.gd"
+} ]
+_global_script_class_icons={
+"drag_queen": "",
+"hole": "",
+"spawner": ""
+}
+
 [application]
 
 config/name="EDU Simples"
-config/icon="res://icon.png"
+run/main_scene="res://menu.tscn"
+boot_splash/show_image=false
+boot_splash/bg_color=Color( 0.117647, 0.341176, 0.611765, 1 )
+config/icon="res://game_icon.png"
+
+[autoload]
+
+Save="*res://save.gd"
 
 [display]
 
 window/size/width=720
 window/size/height=1280
+mouse_cursor/custom_image="res://cursor.png"
 window/stretch/mode="viewport"
-window/stretch/aspect="keep"
+window/stretch/aspect="keep_height"
 
 [gui]
 
@@ -33,6 +63,7 @@ common/enable_pause_aware_picking=true
 [rendering]
 
 quality/driver/driver_name="GLES2"
+quality/driver/fallback_to_gles2=true
 vram_compression/import_etc=true
 vram_compression/import_etc2=false
 environment/default_environment="res://default_env.tres"

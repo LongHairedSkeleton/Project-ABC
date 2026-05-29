@@ -1,0 +1,49 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://actividades/geometry/hole.gd" type="Script" id=1]
+[ext_resource path="res://actividades/geometry/hole_manager.gd" type="Script" id=2]
+[ext_resource path="res://actividades/geometry/shape_for_holes.tscn" type="PackedScene" id=3]
+[ext_resource path="res://icon.png" type="Texture" id=4]
+[ext_resource path="res://spawner_of_draggables.gd" type="Script" id=5]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="spawner" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+mouse_filter = 2
+script = ExtResource( 2 )
+instance = ExtResource( 3 )
+
+[node name="hole" type="Area2D" parent="spawner"]
+position = Vector2( 118, 445 )
+script = ExtResource( 1 )
+type = "square"
+texture = ExtResource( 4 )
+
+[node name="hole2" type="Area2D" parent="spawner"]
+position = Vector2( 268, 453 )
+script = ExtResource( 1 )
+type = "circle"
+texture = ExtResource( 4 )
+
+[node name="hole3" type="Area2D" parent="spawner"]
+position = Vector2( 441, 450 )
+script = ExtResource( 1 )
+type = "triangle"
+texture = ExtResource( 4 )
+
+[node name="hole4" type="Area2D" parent="spawner"]
+position = Vector2( 604, 453 )
+script = ExtResource( 1 )
+type = "star"
+texture = ExtResource( 4 )
+
+[node name="spawner" type="Control" parent="spawner"]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 5 )
+instance = ExtResource( 3 )

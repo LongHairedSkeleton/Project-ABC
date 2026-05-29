@@ -1,4 +1,6 @@
 [gd_scene format=2]
 
 [node name="Line2D" type="Line2D"]
+position = Vector2( 20, 0 )
 points = PoolVector2Array( 253, 610, 254, 454, 162, 453, 357, 299, 515, 451, 439, 452, 429, 608, 254, 610 )
+default_color = Color( 0.117647, 0.341176, 0.611765, 1 )

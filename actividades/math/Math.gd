@@ -1,27 +1,79 @@
 extends Control
 
 var resultado_final = 0
-enum types {simple, problems, simple_plus, times}
-export (types) var problem_type = types.simple
+# 1. Adicionamos 'measures' ao nosso enum de tipos
+enum types {simple, problems, simple_plus, times, conversion}
+var problem_type = Save.current_act
 
-export var amount_of_numbers = 3 # Works for 2, 3, 4+ in normal modes!
+export var amount_of_numbers = 3 
 
 func _ready():
 	randomize() 
 	roll()
-
+	problem_type = Save.current_act
+	if problem_type == types.problems or problem_type == types.conversion:
+		$Label.rect_position.y = 50
 func roll():
-	var label1 = $TextureRect/Button/Label2
-	var label2 = $TextureRect/Button2/Label5
-	var label3 = $TextureRect/Button3/Label4
-	var label4 = $TextureRect/Button4/Label3
+	var label1 = $Button/Label2
+	var label2 = $Button2/Label5
+	var label3 = $Button3/Label4
+	var label4 = $Button4/Label3
 	var labels = [label1, label2, label3, label4]
 	
-	# Clear previous text
-	$TextureRect/Label.text = ""
+#	$Label.text = ""
 
 	# ==========================================
-	# MODE A: WORD PROBLEMS (Always 2 Numbers)
+	# NOVO MODO: MEDIDAS E GRANDEZAS
+	# ==========================================
+	if problem_type == types.conversion:
+		# Lista de regras de conversão
+		# "base": o número que será multiplicado (ex: 1 metro, 2 metros...)
+		# "mult": por quanto multiplicar para achar a outra medida
+		var regras = [
+			# TEMPO
+			{"text": "%s minuto(s) tem quantos segundos?", "mult": 60},
+			{"text": "%s hora(s) tem quantos minutos?", "mult": 60},
+			
+			# COMPRIMENTO
+			{"text": "%s metro(s) tem quantos centímetros?", "mult": 100},
+			{"text": "%s quilômetro(s) tem quantos metros?", "mult": 1000},
+			
+			# MASSA / CAPACIDADE
+			{"text": "%s quilo(s) (kg) tem quantas gramas?", "mult": 1000},
+			{"text": "%s litro(s) tem quantos mililitros?", "mult": 1000}
+		]
+		
+		# Escolhe uma regra aleatória
+		var regra_sorteada = regras.pick_random();
+		regra_sorteada = regras[randi() % regras.size()]
+		
+		# Sorteia o número inicial (para crianças, números baixos de 1 a 5 funcionam melhor)
+		var valor_inicial = (randi() % 5) + 1 
+		
+		# Calcula a resposta correta baseado na multiplicação da regra
+		resultado_final = valor_inicial * regra_sorteada["mult"]
+		
+		# Atualiza o texto da pergunta
+		$MarginContainer/Label.text = regra_sorteada["text"] % str(valor_inicial)
+		
+		# Preenche os botões com respostas erradas plausíveis
+		for label_node in labels:
+			var erro_fator = (randi() % 4) - 2 # Gera -2, -1, 0, 1, 2
+			if erro_fator == 0: erro_fator = 1
+			
+			# Cria uma resposta errada mudando o valor inicial (ex: se era 2 min, calcula como se fosse 3 ou 4 min)
+			var valor_falso = (valor_inicial + erro_fator) * regra_sorteada["mult"]
+			if valor_falso <= 0: 
+				valor_falso = (valor_inicial + 3) * regra_sorteada["mult"]
+				
+			label_node.text = str(valor_falso)
+
+		# Coloca a resposta certa em um botão aleatório
+		var selected_to_be_right = labels[randi() % labels.size()]
+		selected_to_be_right.text = str(resultado_final)
+		return
+	# ==========================================
+	# LOGICA DOS MODOS ANTIGOS (Mantida idêntica)
 	# ==========================================
 	if problem_type == types.problems:
 		var problems = [
@@ -89,12 +141,9 @@ func roll():
 				n1 = n2
 				n2 = temp
 			resultado_final = n1 - n2
-			
-		$TextureRect/Label.text = choice["text"] % [str(n1), str(n2)]
 
-# ==========================================
-	# MODE B: REPEATED ADDITION (The "times" Type)
-	# ==========================================
+		$Label.text = choice["text"] % [str(n1), str(n2)]
+
 	elif problem_type == types.times:
 		var repeated_number = (randi() % 10) + 1 # e.g., 8
 		resultado_final = repeated_number * amount_of_numbers # e.g., 8 * 3 = 24
@@ -111,11 +160,8 @@ func roll():
 			if i < addition_array.size() - 1:
 				expression_string += " + "
 				
-		$TextureRect/Label.text = expression_string
+		$Label.text = expression_string
 
-	# ==========================================
-	# MODE C: DYNAMIC EXPRESSIONS (Simple & Simple Plus)
-	# ==========================================
 	else:
 		var Sinais = ["+", "-"]
 		if problem_type == types.simple_plus:
@@ -149,56 +195,51 @@ func roll():
 		for i in range(chosen_signs.size()):
 			expression_string += " " + chosen_signs[i] + " " + str(current_numbers[i+1])
 		
-		$TextureRect/Label.text = expression_string
+		$Label.text = expression_string
 
-	# ==========================================
-	# UI/BUTTON LABELS UPDATING
-	# ==========================================
+	# Lógica original de preenchimento de botões para os modos antigos
 	if problem_type == types.times:
-		# For 'times', generate wrong answers formatted as "Number × WrongAmount"
 		for label_node in labels:
 			var fake_multiplier = amount_of_numbers + (randi() % 5) - 2
 			if fake_multiplier == amount_of_numbers or fake_multiplier <= 0:
 				fake_multiplier = amount_of_numbers + 1
-			
-			# Pulls a string like "8×4"
-			var current_top_number = $TextureRect/Label.text.left(1) 
+			var current_top_number = $Label.text.left(1) 
 			label_node.text = current_top_number + "×" + str(fake_multiplier)
-			
-		# Overwrite one button with the correct equation representation: "8×3"
 		var selected_to_be_right = labels[randi() % labels.size()]
-		var current_top_number = $TextureRect/Label.text.left(1)
+		var current_top_number = $Label.text.left(1)
 		selected_to_be_right.text = current_top_number + "×" + str(amount_of_numbers)
-		
 	else:
-		# Normal number values for all other modes
 		for label_node in labels:
 			label_node.text = str(resultado_final + (randi() % 21) - 10)
-
 		var selected_to_be_right = labels[randi() % labels.size()]
 		selected_to_be_right.text = str(resultado_final)
 
 # ==========================================
-# SELECTION VERIFICATION FIXED FOR STRINGS
+# VERIFICAÇÃO DE ACERTOS (Atualizada)
 # ==========================================
 func check_if_correct(label):
 	if problem_type == types.times:
-		# Split the button string "8×3" into [8, 3], multiply them to check against total
 		var parts = label.text.split("×")
 		var user_answer_value = int(parts[0]) * int(parts[1])
-		
 		if user_answer_value == resultado_final:
-			print("certo")
+			var right = preload("res://right.tscn")
+			var right_instance = right.instance()
+			add_child(right_instance)
 		else:
-			print("errado")
+			var wrong = preload("res://wrong.tscn")
+			var wrong_instance = wrong.instance()
+			add_child(wrong_instance)
+	if label.text.begins_with(str(resultado_final)):
+		var right = preload("res://right.tscn")
+		var right_instance = right.instance()
+		add_child(right_instance)
 	else:
-		if label.text == str(resultado_final):
-			print("certo")
-		else:
-			print("errado")
+		var wrong = preload("res://wrong.tscn")
+		var wrong_instance = wrong.instance()
+		add_child(wrong_instance)
 	roll()
-# Button mappings remain unchanged
-func _on_Button_pressed(): check_if_correct($TextureRect/Button/Label2)
-func _on_Button2_pressed(): check_if_correct($TextureRect/Button2/Label5)
-func _on_Button3_pressed(): check_if_correct($TextureRect/Button3/Label4)
-func _on_Button4_pressed(): check_if_correct($TextureRect/Button4/Label3)
+
+func _on_Button_pressed(): check_if_correct($Button/Label2)
+func _on_Button2_pressed(): check_if_correct($Button2/Label5)
+func _on_Button3_pressed(): check_if_correct($Button3/Label4)
+func _on_Button4_pressed(): check_if_correct($Button4/Label3)

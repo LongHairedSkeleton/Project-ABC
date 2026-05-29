@@ -2,3 +2,4 @@
 
 [node name="Line2D" type="Line2D"]
 points = PoolVector2Array( 261, 365, 359, 309, 459, 362, 456, 483, 356, 535, 267, 478, 261, 364 )
+default_color = Color( 0.117647, 0.341176, 0.611765, 1 )
