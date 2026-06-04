@@ -1,0 +1,45 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://addons/texttospeech/TextToSpeech.gd" type="Script" id=1]
+[ext_resource path="res://lerry_speak.gd" type="Script" id=2]
+[ext_resource path="res://Assets/WhiteLearn/1013 Sem Título_20260604183418.png" type="Texture" id=3]
+[ext_resource path="res://Assets/WhiteLearn/1013 Sem Título_20260604183405.png" type="Texture" id=4]
+[ext_resource path="res://Assets/WhiteLearn/1013 Sem Título_20260604183411.png" type="Texture" id=5]
+[ext_resource path="res://Assets/WhiteLearn/1013 Sem Título_20260604183357.png" type="Texture" id=6]
+
+[sub_resource type="AudioStreamGenerator" id=1]
+buffer_length = 2.85
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 6 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "default",
+"speed": 12.0
+} ]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+
+[node name="TextToSpeech" type="AudioStreamPlayer" parent="."]
+stream = SubResource( 1 )
+pitch_scale = 4.0
+script = ExtResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 360, 620 )
+scale = Vector2( 0.65, 0.65 )
+frames = SubResource( 2 )
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="Button" type="Button" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 214.0
+margin_top = 332.0
+margin_right = 505.0
+margin_bottom = 681.0
+
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

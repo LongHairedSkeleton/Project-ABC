@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=3 format=2]
 
-[ext_resource path="res://Assets/WhiteLearn/Blue Winter.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://fattern/Fattern.otf" type="DynamicFontData" id=1]
 
 [sub_resource type="DynamicFont" id=1]
 size = 75
@@ -19,10 +19,6 @@ RichTextLabel/colors/font_color_shadow = Color( 0.117647, 0.341176, 0.611765, 1 
 RichTextLabel/colors/selection_color = Color( 0.117647, 0.341176, 0.611765, 1 )
 RichTextLabel/constants/shadow_offset_x = 10
 RichTextLabel/constants/shadow_offset_y = 10
-RichTextLabel/fonts/bold_font = SubResource( 1 )
-RichTextLabel/fonts/bold_italics_font = SubResource( 1 )
-RichTextLabel/fonts/italics_font = SubResource( 1 )
-RichTextLabel/fonts/mono_font = SubResource( 1 )
 RichTextLabel/fonts/normal_font = SubResource( 1 )
 RichTextLabel/styles/focus = null
 RichTextLabel/styles/normal = null
