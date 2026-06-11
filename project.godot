@@ -51,10 +51,12 @@ _global_script_class_icons={
 [application]
 
 config/name="EDU Simples"
+config/description="Programa designado para ajudar professores dos anos iniciais."
 run/main_scene="res://menu.tscn"
 boot_splash/show_image=false
 boot_splash/bg_color=Color( 0.117647, 0.341176, 0.611765, 1 )
 config/icon="res://game_icon.png"
+config/windows_native_icon="res://game_icon.ico"
 
 [autoload]
 
@@ -65,6 +67,8 @@ TextToSpeechEngine="*res://addons/texttospeech/TextToSpeechEngine.gd"
 
 window/size/width=720
 window/size/height=1280
+window/size/fullscreen=true
+window/vsync/use_vsync=false
 mouse_cursor/custom_image="res://cursor.png"
 window/stretch/mode="viewport"
 window/stretch/aspect="keep_height"

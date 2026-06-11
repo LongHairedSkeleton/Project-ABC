@@ -3,7 +3,7 @@
 [resource]
 code = "shader_type canvas_item;
 
-uniform vec2 texture_size = vec2(150, 150);
+uniform vec2 texture_size = vec2(120, 120);
 uniform float largura_balanco = 70.0;
 uniform float velocidade_balanco = 2.0;
 uniform float velocidade_descida = 100.0;
