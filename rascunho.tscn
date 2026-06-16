@@ -2,11 +2,20 @@
 
 [ext_resource path="res://rascunho.gd" type="Script" id=2]
 
-[node name="Control" type="Button"]
-margin_left = -4.0
-margin_right = 258.0
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Button" type="Button" parent="."]
+margin_right = 40.0
 margin_bottom = 98.0
-text = "folha"
+text = "rascunho"
+
+[node name="Panel" type="Panel" parent="."]
+margin_left = 2197.0
+margin_top = 10.0
+margin_right = 3104.0
+margin_bottom = 1466.0
 script = ExtResource( 2 )
 
-[connection signal="pressed" from="." to="." method="_on_Control_pressed"]
+[connection signal="pressed" from="Button" to="Panel" method="_on_Button_pressed"]

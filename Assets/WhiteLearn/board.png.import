@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/icon_2d.png-193d5d8dd40292be18d51a83bdf61c02.stex"
+path="res://.import/board.png-47d864d53708f5630bea05e82f14efa6.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/texttospeech/icon_2d.png"
-dest_files=[ "res://.import/icon_2d.png-193d5d8dd40292be18d51a83bdf61c02.stex" ]
+source_file="res://Assets/WhiteLearn/board.png"
+dest_files=[ "res://.import/board.png-47d864d53708f5630bea05e82f14efa6.stex" ]
 
 [params]
 

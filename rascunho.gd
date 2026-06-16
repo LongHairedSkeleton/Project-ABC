@@ -1,30 +1,80 @@
-extends Button
+extends Panel
 
-var lines = [] # Cada item é um array de pontos: [[p1, p2], [p3, p4]]
+# --- Configurações do Painel (Slide) ---
+var painel_aberto = false
+
+# Armazenamos a coordenada Y original do painel para não alterá-la na animação
+onready var y_original = rect_position.y
+
+# Agora usamos Vector2 para as posições de fechado e aberto
+# Ajuste o 'posicao_aberto' para onde você quer que o painel apareça na tela!
+onready var posicao_fechado = Vector2(OS.window_size.x + rect_size.x, y_original) 
+onready var posicao_aberto = Vector2(OS.window_size.x, y_original) # Desliza para dentro da tela
+
+var duracao_animacao = 0.4
+onready var tween = Tween.new()
+
+# --- Sua Lógica de Desenho Adaptada ---
+var lines = [] 
 var drawing = false
 var erasing = false
 
 const MAX_POINTS = 5000
-const ERASE_RADIUS = 40.0 # Aumentei um pouco para facilitar
+const ERASE_RADIUS = 40.0 
+
+func _ready():
+	add_child(tween)
+	# Inicializa o painel na posição fechada (escondido na direita)
+	rect_position = posicao_fechado
+
+# Esta função será chamada pelo botão de fora para abrir/fechar
+func alternar_painel():
+	tween.stop_all()
+	
+	# Define o Vector2 de destino correto
+	var posicao_destino = posicao_aberto if not painel_aberto else posicao_fechado
+	
+	# Agora interpolamos a propriedade "rect_position" inteira usando Vector2
+	tween.interpolate_property(
+		self, "rect_position", rect_position, 
+		posicao_destino, duracao_animacao, Tween.TRANS_QUAD, Tween.EASE_OUT
+	)
+	tween.start()
+	painel_aberto = not painel_aberto
 
 func _input(event):
+	# Só desenha se o painel estiver aberto
+	if not painel_aberto:
+		return
+		
+	var mouse_pos = get_local_mouse_position()
+	
+	# Usamos get_global_rect() para garantir a checagem correta com a posição global do mouse
+	var mouse_no_painel = get_global_rect().has_point(get_global_mouse_position())
+
 	if event is InputEventMouseButton:
 		if event.button_index == BUTTON_LEFT:
-			drawing = event.pressed
+			drawing = event.pressed and mouse_no_painel
 			if drawing and get_total_points() < MAX_POINTS:
-				lines.append([event.position])
+				lines.append([mouse_pos])
+				update()
 		
 		elif event.button_index == BUTTON_RIGHT:
-			erasing = event.pressed
+			erasing = event.pressed and mouse_no_painel
 			if erasing:
-				erase_at_position(event.position)
+				erase_at_position(mouse_pos)
+				update()
 
 	elif event is InputEventMouseMotion:
 		if drawing and get_total_points() < MAX_POINTS:
-			lines[-1].append(event.position)
-			update()
+			if mouse_no_painel:
+				lines[-1].append(mouse_pos)
+				update()
 		elif erasing:
-			erase_at_position(event.position)
+			if mouse_no_painel:
+				erase_at_position(mouse_pos)
+			else:
+				erasing = false 
 			update()
 
 func erase_at_position(pos):
@@ -37,19 +87,16 @@ func erase_at_position(pos):
 			if pos.distance_to(p) > ERASE_RADIUS:
 				current_segment.append(p)
 			else:
-				# Ponto apagado! Se tínhamos algo acumulado, vira uma linha separada
 				if current_segment.size() > 1:
 					new_lines_list.append(current_segment)
-				current_segment = [] # Reseta para começar uma nova linha após o "buraco"
+				current_segment = [] 
 				changed = true
 		
-		# Adiciona o que sobrou da linha original
 		if current_segment.size() > 1:
 			new_lines_list.append(current_segment)
 	
 	if changed:
 		lines = new_lines_list
-		update()
 
 func get_total_points():
 	var count = 0
@@ -58,18 +105,16 @@ func get_total_points():
 	return count
 
 func _draw():
-	var line_color = Color(0.10, 0.10, 0.5)
+	var line_color = Color(0, 0.9, 1)
 	var line_width = 10
 	
 	for line in lines:
 		if line.size() > 1:
-			# O quarto parâmetro controla o anti-aliasing (true = ligado, false = desligado)
 			draw_polyline(PoolVector2Array(line), line_color, line_width, false)
 	
 	if erasing:
-		# Também desativado aqui para o círculo da borracha
-		draw_arc(get_local_mouse_position(), ERASE_RADIUS, 0, TAU, 24, Color.pink, 1.5, false)
+		draw_arc(get_local_mouse_position(), ERASE_RADIUS, 0, TAU, 24, Color(0, 0.9, 1), 1.5, false)
 
-func _process(delta):
-	if Input.is_action_just_pressed("enter"):
-		get_tree().change_scene("res://Game.tscn")
+# Se o botão estiver dentro do painel, esta função funciona direto ao conectar o sinal pressed()
+func _on_Button_pressed():
+	alternar_painel()

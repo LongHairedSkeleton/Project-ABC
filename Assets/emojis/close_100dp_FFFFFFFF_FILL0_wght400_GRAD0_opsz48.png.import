@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/icon_3d.png-e7d1316802206dff447c4bdc808a7b8a.stex"
+path="res://.import/close_100dp_FFFFFFFF_FILL0_wght400_GRAD0_opsz48.png-931cce2bfde9104342d8523beae4fa50.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/texttospeech/icon_3d.png"
-dest_files=[ "res://.import/icon_3d.png-e7d1316802206dff447c4bdc808a7b8a.stex" ]
+source_file="res://Assets/emojis/close_100dp_FFFFFFFF_FILL0_wght400_GRAD0_opsz48.png"
+dest_files=[ "res://.import/close_100dp_FFFFFFFF_FILL0_wght400_GRAD0_opsz48.png-931cce2bfde9104342d8523beae4fa50.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/icon.png-2a76e8c388f6d3ded857d00e09e6e346.stex"
+path="res://.import/calculate_150dp_FFFFFFFF_FILL0_wght400_GRAD200_opsz48.png-4f953da14258f5b104798ed27df93bbc.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/texttospeech/icon.png"
-dest_files=[ "res://.import/icon.png-2a76e8c388f6d3ded857d00e09e6e346.stex" ]
+source_file="res://Assets/emojis/calculate_150dp_FFFFFFFF_FILL0_wght400_GRAD200_opsz48.png"
+dest_files=[ "res://.import/calculate_150dp_FFFFFFFF_FILL0_wght400_GRAD200_opsz48.png-4f953da14258f5b104798ed27df93bbc.stex" ]
 
 [params]
 
