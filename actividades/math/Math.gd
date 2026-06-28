@@ -1,12 +1,10 @@
 extends Control
 
-# SIGNAL FOR LAN PLAYLIST
-# This tells the LectureController that the student successfully completed this problem
 signal task_completed
 
 var resultado_final = 0
 enum types {simple,problems,simple_plus,times,conversion}
-var problem_type = types.simple # Will be overwritten dynamically when loaded
+var problem_type = types.simple_plus # Will be overwritten dynamically when loaded
 
 export var amount_of_numbers = 3 
 
@@ -54,9 +52,6 @@ func roll():
 		selected_to_be_right.text = str(resultado_final)
 		return
 
-	# ==========================================
-	# LOGICA DOS MODOS ANTIGOS
-	# ==========================================
 	if problem_type == types.problems:
 		var problems = [
 			{"text": "Ana tinha %s moedas e perdeu %s. Quantas sobraram?", "op": "-"},
@@ -141,32 +136,28 @@ func roll():
 				expression_string += " + "
 				
 		$Panel/Label.bbcode_text = "[wave][center]" + expression_string
-
 	else:
 		var Sinais = ["+", "-"]
 		if problem_type == types.simple_plus:
-			Sinais = ["+", "-", "×", "÷"]
+			Sinais = ["+", "-", "*", "/"]
 
 		var current_numbers = []
 		var first_number = (randi() % 10) + 1
 		current_numbers.append(first_number)
-		resultado_final = first_number
 		var chosen_signs = []
 
 		for i in range(amount_of_numbers - 1):
 			var next_sign = Sinais[randi() % Sinais.size()]
 			var next_number = (randi() % 10) + 1
 
-			if next_sign == "÷":
-				while next_number == 0 or resultado_final % next_number != 0:
+			if next_sign == "/":
+				while next_number == 0:
 					next_number = (randi() % 10) + 1
-				resultado_final = resultado_final / next_number
-			elif next_sign == "+":
-				resultado_final += next_number
-			elif next_sign == "-":
-				resultado_final -= next_number
-			elif next_sign == "×":
-				resultado_final *= next_number
+				
+				var numero_anterior = current_numbers[i]
+				if numero_anterior == 0 or numero_anterior % next_number != 0:
+					var multiplicador = (randi() % 3) + 1
+					current_numbers[i] = next_number * multiplicador
 
 			chosen_signs.append(next_sign)
 			current_numbers.append(next_number)
@@ -175,17 +166,30 @@ func roll():
 		for i in range(chosen_signs.size()):
 			expression_string += " " + chosen_signs[i] + " " + str(current_numbers[i+1])
 		
-		$Panel/Label.bbcode_text = "[wave][center]" + expression_string
+		var expr = Expression.new()
+		var error = expr.parse(expression_string)
+		if error == OK:
+			var resultado = expr.execute([], null)
+			resultado_final = int(resultado) 
+		else:
+			print("Erro ao processar a expressão")
+		var display_string = expression_string.replace("*", " x ").replace("/", " : ")
+		$Panel/Label.bbcode_text = "[wave][center]" + display_string
 
+	# ==========================================
+	# GERAÇÃO DOS BOTÕES (ESTRUTURA COMPACTADA E CORRETA)
+	# ==========================================
 	if problem_type == types.times:
+		var valor_base = resultado_final / amount_of_numbers
+		var current_top_number = str(valor_base)
+		
 		for label_node in labels:
 			var fake_multiplier = amount_of_numbers + (randi() % 5) - 2
 			if fake_multiplier == amount_of_numbers or fake_multiplier <= 0:
 				fake_multiplier = amount_of_numbers + 1
-			var current_top_number = $Panel/Label.bbcode_text.left(1) 
 			label_node.text = current_top_number + "×" + str(fake_multiplier)
+			
 		var selected_to_be_right = labels[randi() % labels.size()]
-		var current_top_number = $Panel/Label.bcode_text.left(1)
 		selected_to_be_right.text = current_top_number + "×" + str(amount_of_numbers)
 	else:
 		for label_node in labels:
@@ -193,9 +197,6 @@ func roll():
 		var selected_to_be_right = labels[randi() % labels.size()]
 		selected_to_be_right.text = str(resultado_final)
 
-# ==========================================
-# VERIFICAÇÃO DE ACERTOS (LAN COMPATIBLE)
-# ==========================================
 func check_if_correct(label):
 	var is_correct = false
 	
@@ -209,19 +210,17 @@ func check_if_correct(label):
 
 	if is_correct:
 		var right = preload("res://right.tscn")
+		$Control2.get_points(int(rand_range(1000, 1500)))
 		var right_instance = right.instance()
 		add_child(right_instance)
 		
-		# --- LAN UPDATES ---
-		# Yield brief moment for the 'right' animation/sound popups to display 
 		yield(get_tree().create_timer(1.0), "timeout")
-		# Tell the Playlist Manager/Controller we finished this question successfully
 		emit_signal("task_completed")
 	else:
 		var wrong = preload("res://wrong.tscn")
+		$Control2.get_points(int(rand_range(-750, -500)))
 		var wrong_instance = wrong.instance()
 		add_child(wrong_instance)
-		# We don't advance the game loop if they got it wrong; let them try again.
 
 func _on_Button_pressed(): check_if_correct($Button)
 func _on_Button2_pressed(): check_if_correct($Button2)

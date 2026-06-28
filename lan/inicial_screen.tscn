@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://junegull/junegull.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://lan/inicial_screen.gd" type="Script" id=2]
 [ext_resource path="res://scrolling_background.tscn" type="PackedScene" id=3]
+[ext_resource path="res://actividades/sorting/ball.tscn" type="PackedScene" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 100
@@ -17,7 +18,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0.2 ),
+"times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ) ]
@@ -119,12 +120,13 @@ margin_right = 11.0
 script = ExtResource( 2 )
 
 [node name="Buttonns" type="Control" parent="."]
+modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -6.0
 margin_top = 825.0
-margin_right = 1794.0
-margin_bottom = 3705.0
+margin_right = 10794.0
+margin_bottom = 18105.0
 
 [node name="Button" type="Button" parent="Buttonns"]
 anchor_left = 0.5
@@ -165,13 +167,15 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 11.5
 margin_top = 621.0
-margin_right = 1811.5
-margin_bottom = 3501.0
+margin_right = 10811.5
+margin_bottom = 17901.0
 mouse_filter = 2
 bbcode_enabled = true
 bbcode_text = "[center][wave]quem está usando o dispositivo?"
 text = "quem está usando o dispositivo?"
 fit_content_height = true
+
+[node name="drag_queen" parent="." instance=ExtResource( 4 )]
 
 [connection signal="pressed" from="Buttonns/Button" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="Buttonns/Button2" to="." method="_on_Button2_pressed"]

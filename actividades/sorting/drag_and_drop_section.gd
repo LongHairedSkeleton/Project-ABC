@@ -1,6 +1,6 @@
 extends Control
 
-export var instance = preload("res://ball.tscn")
+export var instance = preload("res://actividades/sorting/ball.tscn")
 var loops = 4
 
 func roll():

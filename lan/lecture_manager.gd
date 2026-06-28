@@ -5,7 +5,12 @@ const SUBJECT_SCENES = {
 	"Times and division": "res://actividades/math/Math.tscn",
 	"conversion": "res://actividades/math/Math.tscn",
 	"times": "res://actividades/math/Math.tscn",
-	"problems": "res://actividades/math/Math.tscn"
+	"problems": "res://actividades/math/Math.tscn",
+	
+	"division_in_equal_parts": "res://actividades/sorting/division_in_equal_parts.tscn",
+	"spacial_geometry": "res://actividades/geometry/geometry.tscn",
+	"drawing": "res://actividades/geometry/drawing.tscn",
+	"spacial_notion": "res://actividades/geometry/holes.tscn"
 }
 
 var playlist = []

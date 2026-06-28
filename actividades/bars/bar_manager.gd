@@ -7,7 +7,7 @@ var bar4 = 0
 
 var rng = [0,1,2,3,4,5,6,7,8,9,10]
 
-var bar = preload("res://bar.tscn")
+var bar = preload("res://actividades/bars/bar.tscn")
 
 var loops = 0
 

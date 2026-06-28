@@ -1,11 +1,11 @@
 extends Control
 
 func _ready():
-	yield(get_tree().create_timer(1), "timeout")
-	$AnimationPlayer.play("startup")
-	
 	$Buttonns.set_anchors_and_margins_preset(Control.PRESET_WIDE)
 	$RichTextLabel.set_anchors_and_margins_preset(Control.PRESET_WIDE)
+	yield(get_tree().create_timer(1), "timeout")
+	$AnimationPlayer.play("startup")
+
 
 onready var camera = $Camera2D
 onready var tween = $Camera2D/Tween

@@ -4,6 +4,8 @@ var amount_of_vertices
 var amount_of_sides
 var amount_of_faces
 
+signal task_completed
+
 var label_value = 0
 
 var target_value = 0
@@ -13,6 +15,7 @@ func _ready():
 	var shapes = "res://shapes_and_numbers/shapes/"
 	load_items_from_folder(shapes)
 	roll()
+	update_label(0)
 
 var possible_items = []
 
@@ -43,10 +46,20 @@ func roll():
 
 	var chosen_shape = possible_items[randi() % possible_items.size()]
 	var instance = chosen_shape.instance()
+	instance.position.y = -200
 	add_child(instance)
 
 	var rand_type = ["amount_of_sides", "amount_of_vertices", "amount_of_faces", "amount_of_angles"].pick_random()
-	$"../RichTextLabel".text = str(rand_type)
+	
+	match rand_type:
+		"amount_of_faces":
+			$"../RichTextLabel".bbcode_text = "[wave][center]qual a quantidade de faces?"
+		"amount_of_sides":
+			$"../RichTextLabel".bbcode_text = "[wave][center]qual a quantidade de lados?"
+		"amount_of_vertices":
+			$"../RichTextLabel".bbcode_text = "[wave][center]qual a quantidade de cantos?"
+		"amount_of_angles":
+			$"../RichTextLabel".bbcode_text = "[wave][center]qual a quantidade de Ângulos?"
 
 	if rand_type == "amount_of_vertices" or rand_type == "amount_of_sides" or rand_type == "amount_of_angles":
 		# FIX: Read directly from the new instance variable, not the scene tree shortcut
@@ -67,18 +80,21 @@ func _on_Button2_pressed():
 
 func update_label(amount):
 	label_value += amount
-	$RichTextLabel.text = str(label_value)
+	$RichTextLabel.bbcode_text = "[wave][center]" + str(label_value)
 
 func check_if_right():
 	if target_value == label_value:
 		var right = preload("res://right.tscn")
 		var right_instance = right.instance()
 		add_child(right_instance)
+		$"../Control2".get_points(int(rand_range(1000, 1500)))
+		yield(get_tree().create_timer(1.0), "timeout")
+		emit_signal("task_completed")
 	else:
 		var wrong = preload("res://wrong.tscn")
 		var wrong_instance = wrong.instance()
 		add_child(wrong_instance)
-	roll()
+		$"../Control2".get_points(int(rand_range(-750, -500)))
 
 func _input(event):
 	if event is InputEventKey and event.pressed:

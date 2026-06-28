@@ -1,6 +1,7 @@
 extends Area2D
 
 signal points(side1, side2)
+signal task_completed
 
 var remaining_balls = 0
 
@@ -23,6 +24,15 @@ func prostate_exam():
 
 func end_minigame():
 	if $"../PointsManager".points1 == $"../PointsManager".points2:
-		print("win")
+		var right = preload("res://right.tscn")
+		$"../Control2".get_points(int(rand_range(1000, 1500)))
+		var right_instance = right.instance()
+		add_child(right_instance)
+		
+		yield(get_tree().create_timer(1.0), "timeout")
+		emit_signal("task_completed")
 	else:
-		print("lose")
+		var wrong = preload("res://wrong.tscn")
+		$"../Control2".get_points(int(rand_range(-750, -500)))
+		var wrong_instance = wrong.instance()
+		add_child(wrong_instance)

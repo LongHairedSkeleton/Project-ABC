@@ -1,6 +1,6 @@
 extends Control
 
-onready var ip_input = $LineEdit
+onready var ip_input = $Node/LineEdit
 
 func _ready():
 	# Connect to our autoload signal using Godot 3 syntax
@@ -14,3 +14,7 @@ func _on_Button_pressed():
 	if ip == "":
 		ip = "127.0.0.1" # Localhost testing
 	Lan.join_classroom(ip)
+
+func _input(event):
+	if event.is_action_pressed("enter"):
+		$Node/Button.emit_signal("pressed")

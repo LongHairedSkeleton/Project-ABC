@@ -1,15 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://actividades/geometry/geometry.gd" type="Script" id=1]
 [ext_resource path="res://scrolling_background.tscn" type="PackedScene" id=2]
 [ext_resource path="res://exit.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Assets/scrolling_background/icon6.png" type="Texture" id=4]
-
-[sub_resource type="StyleBoxEmpty" id=1]
-
-[sub_resource type="StyleBoxEmpty" id=2]
-
-[sub_resource type="StyleBoxEmpty" id=3]
+[ext_resource path="res://points.tscn" type="PackedScene" id=5]
 
 [node name="Control" type="Control"]
 anchor_left = 0.5
@@ -25,6 +20,15 @@ margin_bottom = 640.0
 
 [node name="TextureRect" parent="CanvasLayer" index="1"]
 texture = ExtResource( 4 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+margin_left = -86.0
+margin_top = 381.0
+margin_right = 824.0
+margin_bottom = 707.0
+bbcode_enabled = true
+bbcode_text = "[wave][center]tipo de pergunta"
+text = "tipo de pergunta"
 
 [node name="Node" type="Control" parent="."]
 anchor_left = 0.5
@@ -46,11 +50,6 @@ margin_left = -90.0
 margin_top = 132.0
 margin_right = 90.0
 margin_bottom = 230.0
-custom_styles/hover = SubResource( 1 )
-custom_styles/pressed = SubResource( 1 )
-custom_styles/focus = SubResource( 1 )
-custom_styles/disabled = SubResource( 1 )
-custom_styles/normal = SubResource( 1 )
 text = "Mais"
 
 [node name="Button2" type="Button" parent="Node"]
@@ -62,11 +61,6 @@ margin_left = -130.0
 margin_top = 235.0
 margin_right = 131.0
 margin_bottom = 333.0
-custom_styles/hover = SubResource( 2 )
-custom_styles/pressed = SubResource( 2 )
-custom_styles/focus = SubResource( 2 )
-custom_styles/disabled = SubResource( 2 )
-custom_styles/normal = SubResource( 2 )
 text = "Menos"
 
 [node name="Button3" type="Button" parent="Node"]
@@ -78,28 +72,28 @@ margin_left = -222.0
 margin_top = 356.0
 margin_right = 223.0
 margin_bottom = 481.0
-custom_styles/hover = SubResource( 3 )
-custom_styles/pressed = SubResource( 3 )
-custom_styles/focus = SubResource( 3 )
-custom_styles/disabled = SubResource( 3 )
-custom_styles/normal = SubResource( 3 )
 text = "Confirmar"
 
-[node name="RichTextLabel" type="Label" parent="Node"]
-margin_left = 125.0
-margin_top = 782.0
-margin_right = 193.0
-margin_bottom = 889.0
+[node name="RichTextLabel" type="RichTextLabel" parent="Node"]
+margin_left = 34.0
+margin_top = 721.0
+margin_right = 248.0
+margin_bottom = 915.0
+bbcode_enabled = true
+bbcode_text = "[center][wave]0"
 text = "0"
-
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
-margin_left = 26.0
-margin_top = 452.0
-margin_right = 684.0
-margin_bottom = 680.0
-text = "type"
+fit_content_height = true
 
 [node name="Control" parent="." instance=ExtResource( 3 )]
+margin_left = -10.0
+margin_top = -5.896
+margin_right = -10.0
+margin_bottom = -5.896
+mouse_filter = 2
+
+[node name="Control2" parent="." instance=ExtResource( 5 )]
+margin_top = -150.0
+margin_bottom = -150.0
 
 [connection signal="pressed" from="Node/Button" to="Node" method="_on_Button_pressed"]
 [connection signal="pressed" from="Node/Button2" to="Node" method="_on_Button2_pressed"]

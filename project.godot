@@ -50,7 +50,6 @@ Inputs="*res://inputs.gd"
 
 window/size/width=900
 window/size/height=1440
-window/size/fullscreen=true
 window/vsync/use_vsync=false
 mouse_cursor/custom_image="res://cursor.png"
 window/stretch/mode="2d"
@@ -81,6 +80,11 @@ esq={
 f11={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":16777254,"unicode":0,"echo":false,"script":null)
+ ]
+}
+enter={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":16777221,"unicode":0,"echo":false,"script":null)
  ]
 }
 

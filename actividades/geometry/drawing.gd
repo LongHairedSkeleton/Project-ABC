@@ -4,6 +4,8 @@ var lines = [] # Cada item é um array de pontos: [[p1, p2], [p3, p4]]
 var drawing = false
 var erasing = false
 
+signal task_completed
+
 func _ready():
 	randomize()
 	var shapes = "res://shapes_and_numbers/shapes/"
@@ -34,7 +36,6 @@ func roll():
 	else:
 		print("Warning: No Line2D found inside the instanced scene!")
 
-# FIXED: Helper function to search for Line2D even if it's nested or the root node
 func find_line2d_in_node(node: Node) -> Line2D:
 	if node is Line2D:
 		return node as Line2D
@@ -71,16 +72,16 @@ func _input(event):
 		if event.button_index == BUTTON_LEFT:
 			drawing = event.pressed
 			if drawing and get_total_points() < MAX_POINTS:
-				lines.append([event.position])
+				lines.append([get_local_mouse_position()])
 		
 		elif event.button_index == BUTTON_RIGHT:
 			erasing = event.pressed
 			if erasing:
-				erase_at_position(event.position)
+				erase_at_position(get_local_mouse_position())
 
 	elif event is InputEventMouseMotion:
 		if drawing and get_total_points() < MAX_POINTS:
-			var current_pos = event.position
+			var current_pos = get_local_mouse_position()
 			lines[-1].append(current_pos)
 			
 			if next_point_index < guide_points.size():
@@ -92,7 +93,7 @@ func _input(event):
 			update()
 			
 		elif erasing:
-			erase_at_position(event.position)
+			erase_at_position(get_local_mouse_position())
 			update()
 			
 	if event is InputEventKey and event.pressed and event.scancode == KEY_G:
@@ -110,11 +111,13 @@ func _input(event):
 				var right = preload("res://right.tscn")
 				var right_instance = right.instance()
 				add_child(right_instance)
+				$Control.get_points(int(rand_range(1000, 1500)))
+				yield(get_tree().create_timer(1), "timeout")
+				emit_signal("task_completed")
 			else:
 				var wrong = preload("res://wrong.tscn")
 				var wrong_instance = wrong.instance()
 				add_child(wrong_instance)
-			roll()
 
 func erase_at_position(pos):
 	var new_lines_list = []
@@ -148,7 +151,7 @@ func _draw():
 	if guide_points.size() > 1:
 		draw_polyline(guide_points, Color(1, 1, 1, 0.3), 5.0, true)
 	
-	var line_color = Color(0.1, 0.5, 1.56)
+	var line_color = Color.cyan
 	var line_width = 20
 	
 	for line in lines:

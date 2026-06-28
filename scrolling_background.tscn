@@ -16,6 +16,7 @@ layer = -1
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 color = Color( 0, 0.596078, 0.858824, 1 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
@@ -23,6 +24,7 @@ modulate = Color( 1, 1, 1, 0.501961 )
 material = SubResource( 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 texture = ExtResource( 2 )
 expand = true
 stretch_mode = 2

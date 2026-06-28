@@ -1,7 +1,37 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scrolling_background.tscn" type="PackedScene" id=1]
 [ext_resource path="res://lan/student_manager.gd" type="Script" id=2]
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Node:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "startup"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Node:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -10,7 +40,18 @@ script = ExtResource( 2 )
 
 [node name="CanvasLayer" parent="." instance=ExtResource( 1 )]
 
-[node name="LineEdit" type="LineEdit" parent="."]
+[node name="Node" type="Control" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -450.0
+margin_top = -720.0
+margin_right = 450.0
+margin_bottom = 720.0
+
+[node name="LineEdit" type="LineEdit" parent="Node"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -21,8 +62,9 @@ margin_right = 310.0
 margin_bottom = 64.0
 align = 1
 placeholder_text = "(insira aqui)"
+caret_blink = true
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
+[node name="RichTextLabel" type="RichTextLabel" parent="Node"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -32,19 +74,26 @@ margin_top = -487.5
 margin_right = 354.5
 margin_bottom = -190.5
 bbcode_enabled = true
-bbcode_text = "[center][wave]insira o número de seu professor"
-text = "insira o número de seu professor"
+bbcode_text = "[center][wave]insira o código de seu professor"
+text = "insira o código de seu professor"
 fit_content_height = true
 
-[node name="Button" type="Button" parent="."]
+[node name="Button" type="Button" parent="Node"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -233.0
-margin_top = 84.0
-margin_right = 234.0
-margin_bottom = 182.0
-text = "confirmar"
+margin_left = -273.5
+margin_top = 80.0
+margin_right = 273.5
+margin_bottom = 178.0
+text = "  confirmar  "
 
-[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Node"]
+root_node = NodePath("../..")
+autoplay = "startup"
+anims/RESET = SubResource( 1 )
+anims/startup = SubResource( 2 )
+
+[connection signal="text_changed" from="Node/LineEdit" to="Node/LineEdit" method="_on_LineEdit_text_changed"]
+[connection signal="pressed" from="Node/Button" to="." method="_on_Button_pressed"]
