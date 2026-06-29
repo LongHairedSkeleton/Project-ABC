@@ -220,6 +220,24 @@ func check_if_correct(label):
 		var wrong = preload("res://wrong.tscn")
 		$Control2.get_points(int(rand_range(-750, -500)))
 		var wrong_instance = wrong.instance()
+		
+		# --- DYNAMIC SUBJECT DETECTION ---
+		# Map your current problem type to the exact string used in Save.lectures
+		var current_subject = "Unknown"
+		if problem_type == types.simple:
+			current_subject = "Addition and subtraction"
+		elif problem_type == types.simple_plus:
+			current_subject = "Times and division"
+		elif problem_type == types.conversion:
+			current_subject = "conversion"
+		elif problem_type == types.problems:
+			current_subject = "problems"
+		elif problem_type == types.times:
+			current_subject = "times"
+			
+		# Pass it directly to the wrong instance before it plays
+		wrong_instance.current_exercise = current_subject
+		
 		add_child(wrong_instance)
 
 func _on_Button_pressed(): check_if_correct($Button)

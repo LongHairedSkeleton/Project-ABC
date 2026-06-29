@@ -12,7 +12,6 @@ func _ready():
 	# Connect Godot 3 networking signals
 	get_tree().connect("network_peer_connected", self, "_on_peer_connected")
 
-# --- TEACHER FUNCTIONS ---
 func host_classroom():
 	var error = peer.create_server(DEFAULT_PORT, 32)
 	if error != OK:
@@ -25,6 +24,7 @@ func send_lecture_to_students(lecture_data):
 	current_lecture = lecture_data
 	# rpc() sends the data to all connected clients in Godot 3
 	rpc("receive_lecture", lecture_data)
+	Save.lectures = lecture_data
 
 # --- STUDENT FUNCTIONS ---
 func join_classroom(ip_address):
@@ -40,6 +40,7 @@ func join_classroom(ip_address):
 remotesync func receive_lecture(lecture_data):
 	current_lecture = lecture_data
 	print("Received lecture from teacher: ", lecture_data)
+	Save.lectures = lecture_data
 	emit_signal("lecture_received")
 
 func _on_peer_connected(id):

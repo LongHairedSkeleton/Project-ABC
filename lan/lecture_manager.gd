@@ -19,6 +19,7 @@ var current_scene_node = null
 func _ready():
 	generate_playlist(Lan.current_lecture)
 	load_next_task()
+	print(playlist)
 
 func generate_playlist(lecture_data):
 	playlist.clear()
@@ -35,7 +36,7 @@ func load_next_task():
 		
 	if playlist.empty():
 		print("Lecture finished!")
-		get_tree().quit()
+		get_tree().change_scene("res://results.tscn")
 		return
 		
 	var next_subject = playlist.pop_front()

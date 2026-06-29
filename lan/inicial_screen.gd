@@ -6,7 +6,6 @@ func _ready():
 	yield(get_tree().create_timer(1), "timeout")
 	$AnimationPlayer.play("startup")
 
-
 onready var camera = $Camera2D
 onready var tween = $Camera2D/Tween
 

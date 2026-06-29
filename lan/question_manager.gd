@@ -28,6 +28,8 @@ func _on_Button_pressed():
 		"drawing": int(drawing.text),
 		"spacial_notion": int(spacial_notion.text)
 	}
+	Save.lectures = lecture_data
+	print(Save.lectures)
 	
 	# 3. Broadcast it to everyone who joins
 	Lan.send_lecture_to_students(lecture_data)
