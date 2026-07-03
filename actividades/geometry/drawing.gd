@@ -117,6 +117,7 @@ func _input(event):
 			else:
 				var wrong = preload("res://wrong.tscn")
 				var wrong_instance = wrong.instance()
+				wrong_instance.current_exercise = "drawing"
 				add_child(wrong_instance)
 
 func erase_at_position(pos):

@@ -12,10 +12,8 @@ onready var drawing = $"TabContainer/Matemática/ScrollContainer/VBoxContainer/H
 onready var spacial_notion = $"TabContainer/Matemática/ScrollContainer/VBoxContainer/HBoxContainer9/LineEdit"
 
 func _on_Button_pressed():
-	# 1. Start the server
 	Lan.host_classroom()
 	
-	# 2. Package the values into a dictionary
 	var lecture_data = {
 		"Addition and subtraction": int(addition_subtraction_input.text),
 		"Times and division": int(times_division.text),
@@ -28,10 +26,10 @@ func _on_Button_pressed():
 		"drawing": int(drawing.text),
 		"spacial_notion": int(spacial_notion.text)
 	}
-	Save.lectures = lecture_data
-	print(Save.lectures)
+	if "Save" in self or has_node("/root/Save"):
+		Save.lectures = lecture_data
 	
-	# 3. Broadcast it to everyone who joins
 	Lan.send_lecture_to_students(lecture_data)
+	
 	$AnimationPlayer.play("fade out")
-	$RichTextLabel2.bbcode_text = "[center][wave]" + "seu código é" + "[tornado]" + Lan.get_classroom_ip()
+	$RichTextLabel2.bbcode_text = "[center][wave]seu código é: [/wave][tornado]" + Lan.get_classroom_ip() + "[/tornado][/center]"

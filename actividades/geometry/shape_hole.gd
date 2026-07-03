@@ -38,4 +38,5 @@ func on_collision(area: Area2D):
 		var wrong = preload("res://wrong.tscn")
 		$"%Control".get_points(int(rand_range(-75, -50)))
 		var wrong_instance = wrong.instance()
+		wrong_instance.current_exercise = "spacial_notion"
 		add_child(wrong_instance)

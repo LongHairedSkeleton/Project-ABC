@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://actividades/geometry/hole.gd" type="Script" id=1]
 [ext_resource path="res://actividades/geometry/hole_manager.gd" type="Script" id=2]
+[ext_resource path="res://actividades/geometry/check.gd" type="Script" id=3]
 [ext_resource path="res://scrolling_background.tscn" type="PackedScene" id=4]
 [ext_resource path="res://points.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Assets/WhiteLearn/shape_0001.png" type="Texture" id=7]
@@ -16,6 +17,7 @@ radius = 69.857
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
+script = ExtResource( 3 )
 
 [node name="spawner" type="Control" parent="."]
 unique_name_in_owner = true

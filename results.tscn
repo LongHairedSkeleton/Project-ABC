@@ -24,7 +24,7 @@ scroll_horizontal_enabled = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
 margin_right = 1200.0
-margin_bottom = 1554.0
+margin_bottom = 1923.0
 rect_min_size = Vector2( 1200, 0 )
 custom_constants/separation = -75
 alignment = 1
@@ -50,58 +50,83 @@ text = "questões que ALUNO errou:
 "
 fit_content_height = true
 
-[node name="RichTextLabel4" type="RichTextLabel" parent="ScrollContainer/VBoxContainer"]
+[node name="RichTextLabel3" type="RichTextLabel" parent="ScrollContainer/VBoxContainer"]
 margin_top = 543.0
 margin_right = 1200.0
-margin_bottom = 840.0
-bbcode_enabled = true
-bbcode_text = "[wave][center][rainbow]aritmética
-"
-text = "aritmética
-"
-fit_content_height = true
-
-[node name="RichTextLabel3" type="RichTextLabel" parent="ScrollContainer/VBoxContainer"]
-margin_top = 765.0
-margin_right = 1200.0
-margin_bottom = 963.0
+margin_bottom = 741.0
 bbcode_enabled = true
 bbcode_text = "[wave][center]adição/subtração:"
 text = "adição/subtração:"
 fit_content_height = true
 
 [node name="RichTextLabel5" type="RichTextLabel" parent="ScrollContainer/VBoxContainer"]
-margin_top = 888.0
+margin_top = 666.0
 margin_right = 1200.0
-margin_bottom = 1086.0
+margin_bottom = 864.0
 bbcode_enabled = true
 bbcode_text = "[wave][center]multiplicação/divisão:"
 text = "multiplicação/divisão:"
 fit_content_height = true
 
 [node name="RichTextLabel6" type="RichTextLabel" parent="ScrollContainer/VBoxContainer"]
-margin_top = 1011.0
+margin_top = 789.0
 margin_right = 1200.0
-margin_bottom = 1209.0
+margin_bottom = 987.0
 bbcode_enabled = true
 bbcode_text = "[wave][center]multiplicação repetida:"
 text = "multiplicação repetida:"
 fit_content_height = true
 
 [node name="RichTextLabel7" type="RichTextLabel" parent="ScrollContainer/VBoxContainer"]
-margin_top = 1134.0
+margin_top = 912.0
 margin_right = 1200.0
-margin_bottom = 1431.0
+margin_bottom = 1209.0
 bbcode_enabled = true
 bbcode_text = "[wave][center]problemas contextualizados:"
 text = "problemas contextualizados:"
 fit_content_height = true
 
 [node name="RichTextLabel8" type="RichTextLabel" parent="ScrollContainer/VBoxContainer"]
-margin_top = 1356.0
+margin_top = 1134.0
 margin_right = 1200.0
-margin_bottom = 1554.0
+margin_bottom = 1332.0
 bbcode_enabled = true
 bbcode_text = "[wave][center]conversão de medidas:"
 text = "conversão de medidas:"
+fit_content_height = true
+
+[node name="RichTextLabel4" type="RichTextLabel" parent="ScrollContainer/VBoxContainer"]
+margin_top = 1257.0
+margin_right = 1200.0
+margin_bottom = 1455.0
+bbcode_enabled = true
+bbcode_text = "[wave][center]divisão em partes iguais"
+text = "divisão em partes iguais"
+fit_content_height = true
+
+[node name="RichTextLabel9" type="RichTextLabel" parent="ScrollContainer/VBoxContainer"]
+margin_top = 1380.0
+margin_right = 1200.0
+margin_bottom = 1578.0
+bbcode_enabled = true
+bbcode_text = "[wave][center]geometria espacial:"
+text = "geometria espacial:"
+fit_content_height = true
+
+[node name="RichTextLabel10" type="RichTextLabel" parent="ScrollContainer/VBoxContainer"]
+margin_top = 1503.0
+margin_right = 1200.0
+margin_bottom = 1800.0
+bbcode_enabled = true
+bbcode_text = "[wave][center]desenho de formas geométricas:"
+text = "desenho de formas geométricas:"
+fit_content_height = true
+
+[node name="RichTextLabel11" type="RichTextLabel" parent="ScrollContainer/VBoxContainer"]
+margin_top = 1725.0
+margin_right = 1200.0
+margin_bottom = 1923.0
+bbcode_enabled = true
+bbcode_text = "[wave][center]noção geométrica:"
+text = "noção geométrica:"
 fit_content_height = true

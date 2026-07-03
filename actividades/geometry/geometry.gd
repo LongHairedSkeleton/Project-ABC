@@ -53,13 +53,13 @@ func roll():
 	
 	match rand_type:
 		"amount_of_faces":
-			$"../RichTextLabel".bbcode_text = "[wave][center]qual a quantidade de faces?"
+			$RichTextLabel.bbcode_text = "[wave][center]qual a quantidade de faces?"
 		"amount_of_sides":
-			$"../RichTextLabel".bbcode_text = "[wave][center]qual a quantidade de lados?"
+			$RichTextLabel.bbcode_text = "[wave][center]qual a quantidade de lados?"
 		"amount_of_vertices":
-			$"../RichTextLabel".bbcode_text = "[wave][center]qual a quantidade de cantos?"
+			$RichTextLabel.bbcode_text = "[wave][center]qual a quantidade de cantos?"
 		"amount_of_angles":
-			$"../RichTextLabel".bbcode_text = "[wave][center]qual a quantidade de Ângulos?"
+			$RichTextLabel.bbcode_text = "[wave][center]qual a quantidade de Ângulos?"
 
 	if rand_type == "amount_of_vertices" or rand_type == "amount_of_sides" or rand_type == "amount_of_angles":
 		# FIX: Read directly from the new instance variable, not the scene tree shortcut
@@ -80,21 +80,22 @@ func _on_Button2_pressed():
 
 func update_label(amount):
 	label_value += amount
-	$RichTextLabel.bbcode_text = "[wave][center]" + str(label_value)
+	$Node/RichTextLabel.bbcode_text = "[wave][center]" + str(label_value)
 
 func check_if_right():
 	if target_value == label_value:
 		var right = preload("res://right.tscn")
 		var right_instance = right.instance()
 		add_child(right_instance)
-		$"../Control2".get_points(int(rand_range(1000, 1500)))
+		$Control2.get_points(int(rand_range(1000, 1500)))
 		yield(get_tree().create_timer(1.0), "timeout")
 		emit_signal("task_completed")
 	else:
 		var wrong = preload("res://wrong.tscn")
 		var wrong_instance = wrong.instance()
+		wrong_instance.current_exercise = "spacial_geometry"
 		add_child(wrong_instance)
-		$"../Control2".get_points(int(rand_range(-750, -500)))
+		$Control2.get_points(int(rand_range(-750, -500)))
 
 func _input(event):
 	if event is InputEventKey and event.pressed:

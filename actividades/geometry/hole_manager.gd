@@ -25,13 +25,7 @@ func roll():
 		add_child(ball_clone)
 
 func check_remaining():
-	var child_count = 0
-	for child in get_children():
-		if child is Area2D:
-			child_count += 1
-	if child_count == 4:
-		yield(get_tree().create_timer(1),"timeout")
-		emit_signal("task_completed")
+	$"..".check_remaining()
 
 func _on_hole_points(points):
 	pass # Replace with function body.

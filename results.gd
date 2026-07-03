@@ -13,7 +13,11 @@ func _ready():
 		"Times and division": $ScrollContainer/VBoxContainer/RichTextLabel5,
 		"conversion": $ScrollContainer/VBoxContainer/RichTextLabel8,
 		"problems": $ScrollContainer/VBoxContainer/RichTextLabel7,
-		"times": $ScrollContainer/VBoxContainer/RichTextLabel6
+		"times": $ScrollContainer/VBoxContainer/RichTextLabel6,
+		"division_in_equal_parts":$ScrollContainer/VBoxContainer/RichTextLabel4,
+		"drawing":$ScrollContainer/VBoxContainer/RichTextLabel10,
+		"spacial_geometry":$ScrollContainer/VBoxContainer/RichTextLabel9,
+		"spacial_notion":$ScrollContainer/VBoxContainer/RichTextLabel11
 	}
 	
 	for subject in subjects_ui.keys():

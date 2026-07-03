@@ -15,3 +15,5 @@ func add_points(side1, side2):
 
 	$"../Area2D/RichTextLabel".text = str(points1)
 	$"../Area2D2/RichTextLabel".text = str(points2)
+
+

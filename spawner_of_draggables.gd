@@ -1,6 +1,8 @@
 extends Control
 class_name spawner
 
+signal task_completed
+
 export var instance = preload("res://actividades/sorting/ball.tscn")
 
 var ball_clone = instance.instance()
@@ -30,3 +32,21 @@ func roll():
 
 func _ready():
 	roll()
+
+func end_minigame():
+	if $PointsManager.points2 == $PointsManager.points1:
+		var right = preload("res://right.tscn")
+		$Control2.get_points(int(rand_range(1000, 1500)))
+		var right_instance = right.instance()
+		add_child(right_instance)
+		
+		yield(get_tree().create_timer(1.0), "timeout")
+		emit_signal("task_completed")
+	else:
+		var wrong = preload("res://wrong.tscn")
+		$Control2.get_points(int(rand_range(-750, -500)))
+		var wrong_instance = wrong.instance()
+		wrong_instance.current_exercise = "division_in_equal_parts"
+		add_child(wrong_instance)
+		yield(get_tree().create_timer(1.0), "timeout")
+		get_tree().change_scene("res://actividades/sorting/division_in_equal_parts.tscn")
