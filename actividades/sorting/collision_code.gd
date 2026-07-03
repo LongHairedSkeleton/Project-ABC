@@ -19,5 +19,5 @@ func _on_Area2D_area_entered(area):
 
 func prostate_exam():
 	if remaining_balls == 0:
-		$"..".end_minigame()
+		$"../PointsManager".end_minigame()
 	print(remaining_balls)

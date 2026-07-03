@@ -8,21 +8,17 @@ uniform float largura_balanco = 70.0;
 uniform float velocidade_balanco = 2.0;
 uniform float velocidade_descida = 100.0;
 
+//isso td com \"tile\" ativado nas opçoes de exportaçao
+
 void fragment() {
-    // 1. Calculamos o movimento BRUTO em pixels (ainda com decimais)
-    float move_x = sin(TIME * velocidade_balanco) * largura_balanco;
+       float move_x = sin(TIME * velocidade_balanco) * largura_balanco;
     float move_y = TIME * velocidade_descida;
     vec2 movimento_bruto = vec2(move_x, move_y);
 
-    // 2. O SEGREDO: Usamos floor no movimento ANTES de aplicar à UV
-    // Isso faz com que a imagem só se mova quando o cálculo atingir 1 pixel inteiro
-    vec2 offset_pixel = floor(movimento_bruto);
+       vec2 offset_pixel = floor(movimento_bruto);
     
-    // 3. Calculamos a posição final na grade de pixels
-    // Usamos o mod para o tiling (repetição)
     vec2 pixel_pos = mod((UV * texture_size) + offset_pixel, texture_size);
 
-    // 4. Transformamos de volta para UV (0.0 a 1.0) pegando o centro do pixel (+0.5)
     vec2 uv_snap = (floor(pixel_pos) + 0.5) / texture_size;
 
     COLOR = texture(TEXTURE, uv_snap);

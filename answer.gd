@@ -3,20 +3,19 @@ extends Control
 var current_exercise = "Unknown"
 
 func _ready():
-	# If a valid subject was passed, log the mistake globally
+	# Força o tratamento do texto para bater com o dicionário do results.gd
 	if current_exercise != "Unknown":
-		if not Save.has_method("mistakes"): 
-			# Safely inject/initialize the dictionary if it doesn't exist in Save yet
-			if not "mistakes" in Save:
-				Save.set("mistakes", {})
-				
-		var mistakes_dict = Save.get("mistakes")
-		if not current_exercise in mistakes_dict:
-			mistakes_dict[current_exercise] = 1
+		# Garante que o dicionário existe no Save
+		if not "mistakes" in Save or Save.mistakes == null:
+			Save.mistakes = {}
+		
+		# Registra o erro diretamente no escopo global
+		if not current_exercise in Save.mistakes:
+			Save.mistakes[current_exercise] = 1
 		else:
-			mistakes_dict[current_exercise] += 1
+			Save.mistakes[current_exercise] += 1
 			
-		print("Mistake logged for: ", current_exercise, " | Total: ", mistakes_dict[current_exercise])
+		print("Erro global registrado para: ", current_exercise, " -> Total: ", Save.mistakes[current_exercise])
 	
 	$Sprite/AnimationPlayer.play("play")
 	yield(get_tree().create_timer(1), "timeout")

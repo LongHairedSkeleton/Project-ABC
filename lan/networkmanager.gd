@@ -19,12 +19,6 @@ func host_classroom():
 	get_tree().network_peer = peer
 	print("Classroom hosted via WebSockets on port ", DEFAULT_PORT)
 
-func send_lecture_to_students(lecture_data):
-	current_lecture = lecture_data
-	rpc("receive_lecture", lecture_data)
-	if "Save" in self:
-		Save.lectures = lecture_data
-
 func join_classroom(ip_address):
 	# This connects a client. Works on BOTH Browser and Desktop!
 	peer = WebSocketClient.new()
@@ -36,12 +30,6 @@ func join_classroom(ip_address):
 		return
 	get_tree().network_peer = peer
 	print("Connecting to teacher via WebSocket at ", url)
-
-remotesync func receive_lecture(lecture_data):
-	current_lecture = lecture_data
-	if "Save" in self:
-		Save.lectures = lecture_data
-	emit_signal("lecture_received")
 
 func _on_peer_connected(id):
 	if get_tree().is_network_server() and not current_lecture.empty():
@@ -64,3 +52,12 @@ func get_classroom_ip() -> String:
 			return ip
 			
 	return "No LAN Connection"
+func send_lecture_to_students(lecture_data):
+	current_lecture = lecture_data
+	rpc("receive_lecture", lecture_data)
+	Save.lectures = lecture_data # Acesso direto sem checagem desnecessária
+
+remotesync func receive_lecture(lecture_data):
+	current_lecture = lecture_data
+	Save.lectures = lecture_data # Garante que o Aluno salve os dados localmente
+	emit_signal("lecture_received")

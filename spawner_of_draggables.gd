@@ -12,9 +12,9 @@ var loops = int(rand_range(6, 16))
 var is_any_item_dragging = false
 
 func divisible_by_2():
-	loops = int(rand_range(6, 16))
-	if loops % 2 != 0:
-		divisible_by_2()
+	var loops: int = randi() % 5 + 3
+	loops = loops * 2
+	return loops
 
 func roll():
 	for i in (loops):

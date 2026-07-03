@@ -4,7 +4,7 @@ signal task_completed
 
 var resultado_final = 0
 enum types {simple,problems,simple_plus,times,conversion}
-var problem_type = types.simple_plus # Will be overwritten dynamically when loaded
+var problem_type = types.times # Will be overwritten dynamically when loaded
 
 export var amount_of_numbers = 3 
 
@@ -120,10 +120,9 @@ func roll():
 			resultado_final = n1 - n2
 
 		$Panel/Label.bbcode_text = "[wave][center]" + choice["text"] % [str(n1), str(n2)]
-
 	elif problem_type == types.times:
 		var repeated_number = (randi() % 10) + 1
-		resultado_final = repeated_number * amount_of_numbers
+		resultado_final = repeated_number * amount_of_numbers 
 		
 		var addition_array = []
 		for i in range(amount_of_numbers):
@@ -176,21 +175,20 @@ func roll():
 		var display_string = expression_string.replace("*", " x ").replace("/", " : ")
 		$Panel/Label.bbcode_text = "[wave][center]" + display_string
 
-	# ==========================================
-	# GERAÇÃO DOS BOTÕES (ESTRUTURA COMPACTADA E CORRETA)
-	# ==========================================
 	if problem_type == types.times:
-		var valor_base = resultado_final / amount_of_numbers
-		var current_top_number = str(valor_base)
+		var valor_base = int(resultado_final) / amount_of_numbers 
 		
 		for label_node in labels:
+			# Gera um multiplicador falso (ex: se o certo é 3, ele pode gerar 2, 4, 5...)
 			var fake_multiplier = amount_of_numbers + (randi() % 5) - 2
+			
 			if fake_multiplier == amount_of_numbers or fake_multiplier <= 0:
 				fake_multiplier = amount_of_numbers + 1
-			label_node.text = current_top_number + "×" + str(fake_multiplier)
+				
+			label_node.text = str(valor_base) + "x" + str(fake_multiplier)
 			
 		var selected_to_be_right = labels[randi() % labels.size()]
-		selected_to_be_right.text = current_top_number + "×" + str(amount_of_numbers)
+		selected_to_be_right.text = str(valor_base) + "x" + str(amount_of_numbers)
 	else:
 		for label_node in labels:
 			label_node.text = str(resultado_final + (randi() % 21) - 10)
@@ -201,10 +199,12 @@ func check_if_correct(label):
 	var is_correct = false
 	
 	if problem_type == types.times:
-		var parts = label.text.split("×")
-		var user_answer_value = int(parts[0]) * int(parts[1])
-		if user_answer_value == resultado_final:
+		var valor_base = int(resultado_final) / amount_of_numbers
+		var texto_correto_esperado = str(valor_base) + "x" + str(amount_of_numbers)
+		
+		if label.text == texto_correto_esperado:
 			is_correct = true
+
 	elif label.text.begins_with(str(resultado_final)):
 		is_correct = true
 
@@ -221,24 +221,16 @@ func check_if_correct(label):
 		$Control2.get_points(int(rand_range(-750, -500)))
 		var wrong_instance = wrong.instance()
 		
-		# --- DYNAMIC SUBJECT DETECTION ---
-		# Map your current problem type to the exact string used in Save.lectures
 		var current_subject = "Unknown"
-		if problem_type == types.simple:
-			current_subject = "Addition and subtraction"
-		elif problem_type == types.simple_plus:
-			current_subject = "Times and division"
-		elif problem_type == types.conversion:
-			current_subject = "conversion"
-		elif problem_type == types.problems:
-			current_subject = "problems"
-		elif problem_type == types.times:
-			current_subject = "times"
+		if problem_type == types.simple: current_subject = "Addition and subtraction"
+		elif problem_type == types.simple_plus: current_subject = "Times and division"
+		elif problem_type == types.conversion: current_subject = "conversion"
+		elif problem_type == types.problems: current_subject = "problems"
+		elif problem_type == types.times: current_subject = "times"
 			
-		# Pass it directly to the wrong instance before it plays
 		wrong_instance.current_exercise = current_subject
-		
 		add_child(wrong_instance)
+		
 
 func _on_Button_pressed(): check_if_correct($Button)
 func _on_Button2_pressed(): check_if_correct($Button2)
