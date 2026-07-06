@@ -4,7 +4,7 @@ signal task_completed
 
 var resultado_final = 0
 enum types {simple,problems,simple_plus,times,conversion}
-var problem_type = types.times # Will be overwritten dynamically when loaded
+var problem_type = types.problems
 
 export var amount_of_numbers = 3 
 

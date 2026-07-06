@@ -124,8 +124,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -6.0
 margin_top = 825.0
-margin_right = 24294.0
-margin_bottom = 39705.0
+margin_right = 27894.0
+margin_bottom = 45465.0
 
 [node name="Button" type="Button" parent="Buttonns"]
 anchor_left = 0.5
@@ -166,8 +166,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 11.5
 margin_top = 621.0
-margin_right = 24311.5
-margin_bottom = 39501.0
+margin_right = 27911.5
+margin_bottom = 45261.0
 mouse_filter = 2
 bbcode_enabled = true
 bbcode_text = "[center][wave]quem está usando o dispositivo?"

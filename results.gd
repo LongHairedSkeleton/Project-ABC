@@ -16,7 +16,21 @@ func _ready():
 		"division_in_equal_parts":$ScrollContainer/VBoxContainer/RichTextLabel4,
 		"drawing":$ScrollContainer/VBoxContainer/RichTextLabel10,
 		"spacial_geometry":$ScrollContainer/VBoxContainer/RichTextLabel9,
-		"spacial_notion":$ScrollContainer/VBoxContainer/RichTextLabel11
+		"spacial_notion":$ScrollContainer/VBoxContainer/RichTextLabel11,
+		
+		"rec_letras": $ScrollContainer/VBoxContainer/Label6,
+		"juntar_letras": $ScrollContainer/VBoxContainer/Label7,
+		"interpretacao": $ScrollContainer/VBoxContainer/Label8,
+		"escrita_correta": $ScrollContainer/VBoxContainer/Label9,
+		"generos": $ScrollContainer/VBoxContainer/Label10,
+		"maiuscula_minus": $ScrollContainer/VBoxContainer/Label11,
+		"pontuacao": $ScrollContainer/VBoxContainer/Label12,
+		"acentos": $ScrollContainer/VBoxContainer/Label13,
+		"singular_plural": $ScrollContainer/VBoxContainer/Label14,
+		"genero_gramatical": $ScrollContainer/VBoxContainer/Label15,
+		"verbos": $ScrollContainer/VBoxContainer/Label16,
+		"substantivos": $ScrollContainer/VBoxContainer/Label17,
+		"analise_ling": $ScrollContainer/VBoxContainer/Label18
 	}
 	
 	for subject in subjects_ui.keys():

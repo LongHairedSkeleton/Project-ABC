@@ -23,7 +23,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id=1]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("TabContainer/Matemática/ScrollContainer:modulate")
+tracks/0/path = NodePath("TabContainer/Matemática/ScrollContainer/VBoxContainer/Button:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -35,7 +35,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("TabContainer/Matemática/ScrollContainer/VBoxContainer/Button:modulate")
+tracks/1/path = NodePath("TabContainer:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -47,7 +47,7 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("RichTextLabel2:modulate")
+tracks/2/path = NodePath("TabContainer/Matemática/ScrollContainer:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -56,10 +56,10 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ) ]
+"values": [ Color( 1, 1, 1, 1 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("TabContainer:modulate")
+tracks/3/path = NodePath("RichTextLabel2:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -68,7 +68,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 1 ) ]
+"values": [ Color( 1, 1, 1, 0 ) ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -86,28 +86,28 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("RichTextLabel2:modulate")
+tracks/1/path = NodePath("TabContainer:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.5, 1 ),
+"times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("TabContainer:modulate")
+tracks/2/path = NodePath("RichTextLabel2:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.5 ),
+"times": PoolRealArray( 0.5, 1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
 [node name="master" type="Control"]
@@ -490,11 +490,438 @@ text = "criar"
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 4.0
-margin_top = 116.0
-margin_right = -4.0
-margin_bottom = -4.0
+margin_top = 108.0
 theme = ExtResource( 2 )
+
+[node name="ScrollContainer2" type="ScrollContainer" parent="TabContainer/português"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -810.0
+margin_top = -666.0
+margin_right = 810.0
+margin_bottom = 666.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/português/ScrollContainer2"]
+margin_right = 1215.0
+margin_bottom = 1905.0
+custom_constants/separation = 35
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="TabContainer/português/ScrollContainer2/VBoxContainer"]
+margin_right = 1215.0
+margin_bottom = 198.0
+alignment = 1
+
+[node name="Label6" type="RichTextLabel" parent="TabContainer/português/ScrollContainer2/VBoxContainer/HBoxContainer6"]
+margin_right = 1100.0
+margin_bottom = 198.0
+rect_min_size = Vector2( 1100, 0 )
+rect_clip_content = false
+bbcode_enabled = true
+bbcode_text = "[center][wave]reconhecimento de letras:"
+text = "reconhecimento de letras:"
+fit_content_height = true
+
+[node name="LineEdit" type="LineEdit" parent="TabContainer/português/ScrollContainer2/VBoxContainer/HBoxContainer6"]
+margin_left = 1104.0
+margin_right = 1215.0
+margin_bottom = 198.0
+rect_min_size = Vector2( 111, 0 )
+custom_constants/minimum_spaces = 1
+align = 1
+max_length = 2
+expand_to_text_length = true
+virtual_keyboard_type = 2
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+placeholder_text = "0"
+caret_blink = true
+script = ExtResource( 4 )
+
+[node name="HBoxContainer7" type="HBoxContainer" parent="TabContainer/português/ScrollContainer2/VBoxContainer"]
+margin_top = 233.0
+margin_right = 1215.0
+margin_bottom = 332.0
+alignment = 1
+
+[node name="Label6" type="RichTextLabel" parent="TabContainer/português/ScrollContainer2/VBoxContainer/HBoxContainer7"]
+margin_right = 1100.0
+margin_bottom = 99.0
+rect_min_size = Vector2( 1100, 0 )
+rect_clip_content = false
+bbcode_enabled = true
+bbcode_text = "[center][wave]formação de palavras"
+text = "formação de palavras"
+fit_content_height = true
+
+[node name="LineEdit" type="LineEdit" parent="TabContainer/português/ScrollContainer2/VBoxContainer/HBoxContainer7"]
+margin_left = 1104.0
+margin_right = 1215.0
+margin_bottom = 99.0
+rect_min_size = Vector2( 111, 0 )
+custom_constants/minimum_spaces = 1
+align = 1
+max_length = 2
+expand_to_text_length = true
+virtual_keyboard_type = 2
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+placeholder_text = "0"
+caret_blink = true
+script = ExtResource( 4 )
+
+[node name="HBoxContainer8" type="HBoxContainer" parent="TabContainer/português/ScrollContainer2/VBoxContainer"]
+margin_top = 367.0
+margin_right = 1215.0
+margin_bottom = 466.0
+alignment = 1
+
+[node name="Label6" type="RichTextLabel" parent="TabContainer/português/ScrollContainer2/VBoxContainer/HBoxContainer8"]
+margin_right = 1100.0
+margin_bottom = 99.0
+rect_min_size = Vector2( 1100, 0 )
+rect_clip_content = false
+bbcode_enabled = true
+bbcode_text = "[center][wave]interpretação:"
+text = "interpretação:"
+fit_content_height = true
+
+[node name="LineEdit" type="LineEdit" parent="TabContainer/português/ScrollContainer2/VBoxContainer/HBoxContainer8"]
+margin_left = 1104.0
+margin_right = 1215.0
+margin_bottom = 99.0
+rect_min_size = Vector2( 111, 0 )
+custom_constants/minimum_spaces = 1
+align = 1
+max_length = 2
+expand_to_text_length = true
+virtual_keyboard_type = 2
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+placeholder_text = "0"
+caret_blink = true
+script = ExtResource( 4 )
+
+[node name="HBoxContainer9" type="HBoxContainer" parent="TabContainer/português/ScrollContainer2/VBoxContainer"]
+margin_top = 501.0
+margin_right = 1215.0
+margin_bottom = 600.0
+alignment = 1
+
+[node name="Label6" type="RichTextLabel" parent="TabContainer/português/ScrollContainer2/VBoxContainer/HBoxContainer9"]
+margin_right = 1100.0
+margin_bottom = 99.0
+rect_min_size = Vector2( 1100, 0 )
+rect_clip_content = false
+bbcode_enabled = true
+bbcode_text = "[center][wave]gramática básica:"
+text = "gramática básica:"
+fit_content_height = true
+
+[node name="LineEdit" type="LineEdit" parent="TabContainer/português/ScrollContainer2/VBoxContainer/HBoxContainer9"]
+margin_left = 1104.0
+margin_right = 1215.0
+margin_bottom = 99.0
+rect_min_size = Vector2( 111, 0 )
+custom_constants/minimum_spaces = 1
+align = 1
+max_length = 2
+expand_to_text_length = true
+virtual_keyboard_type = 2
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+placeholder_text = "0"
+caret_blink = true
+script = ExtResource( 4 )
+
+[node name="HBoxContainer10" type="HBoxContainer" parent="TabContainer/português/ScrollContainer2/VBoxContainer"]
+margin_top = 635.0
+margin_right = 1215.0
+margin_bottom = 734.0
+alignment = 1
+
+[node name="Label6" type="RichTextLabel" parent="TabContainer/português/ScrollContainer2/VBoxContainer/HBoxContainer10"]
+margin_right = 1100.0
+margin_bottom = 99.0
+rect_min_size = Vector2( 1100, 0 )
+rect_clip_content = false
+bbcode_enabled = true
+bbcode_text = "[center][wave]gêneros textuais"
+text = "gêneros textuais"
+fit_content_height = true
+
+[node name="LineEdit" type="LineEdit" parent="TabContainer/português/ScrollContainer2/VBoxContainer/HBoxContainer10"]
+margin_left = 1104.0
+margin_right = 1215.0
+margin_bottom = 99.0
+rect_min_size = Vector2( 111, 0 )
+custom_constants/minimum_spaces = 1
+align = 1
+max_length = 2
+expand_to_text_length = true
+virtual_keyboard_type = 2
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+placeholder_text = "0"
+caret_blink = true
+script = ExtResource( 4 )
+
+[node name="HBoxContainer11" type="HBoxContainer" parent="TabContainer/português/ScrollContainer2/VBoxContainer"]
+margin_top = 769.0
+margin_right = 1215.0
+margin_bottom = 967.0
+alignment = 1
+
+[node name="Label6" type="RichTextLabel" parent="TabContainer/português/ScrollContainer2/VBoxContainer/HBoxContainer11"]
+margin_right = 1100.0
+margin_bottom = 198.0
+rect_min_size = Vector2( 1100, 0 )
+rect_clip_content = false
+bbcode_enabled = true
+bbcode_text = "[center][wave]maiúsculas e minúsculas:"
+text = "maiúsculas e minúsculas:"
+fit_content_height = true
+
+[node name="LineEdit" type="LineEdit" parent="TabContainer/português/ScrollContainer2/VBoxContainer/HBoxContainer11"]
+margin_left = 1104.0
+margin_right = 1215.0
+margin_bottom = 198.0
+rect_min_size = Vector2( 111, 0 )
+custom_constants/minimum_spaces = 1
+align = 1
+max_length = 2
+expand_to_text_length = true
+virtual_keyboard_type = 2
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+placeholder_text = "0"
+caret_blink = true
+script = ExtResource( 4 )
+
+[node name="HBoxContainer12" type="HBoxContainer" parent="TabContainer/português/ScrollContainer2/VBoxContainer"]
+margin_top = 1002.0
+margin_right = 1215.0
+margin_bottom = 1101.0
+alignment = 1
+
+[node name="Label6" type="RichTextLabel" parent="TabContainer/português/ScrollContainer2/VBoxContainer/HBoxContainer12"]
+margin_right = 1100.0
+margin_bottom = 99.0
+rect_min_size = Vector2( 1100, 0 )
+rect_clip_content = false
+bbcode_enabled = true
+bbcode_text = "[center][wave]pontuação:"
+text = "pontuação:"
+fit_content_height = true
+
+[node name="LineEdit" type="LineEdit" parent="TabContainer/português/ScrollContainer2/VBoxContainer/HBoxContainer12"]
+margin_left = 1104.0
+margin_right = 1215.0
+margin_bottom = 99.0
+rect_min_size = Vector2( 111, 0 )
+custom_constants/minimum_spaces = 1
+align = 1
+max_length = 2
+expand_to_text_length = true
+virtual_keyboard_type = 2
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+placeholder_text = "0"
+caret_blink = true
+script = ExtResource( 4 )
+
+[node name="HBoxContainer13" type="HBoxContainer" parent="TabContainer/português/ScrollContainer2/VBoxContainer"]
+margin_top = 1136.0
+margin_right = 1215.0
+margin_bottom = 1235.0
+alignment = 1
+
+[node name="Label6" type="RichTextLabel" parent="TabContainer/português/ScrollContainer2/VBoxContainer/HBoxContainer13"]
+margin_right = 1100.0
+margin_bottom = 99.0
+rect_min_size = Vector2( 1100, 0 )
+rect_clip_content = false
+bbcode_enabled = true
+bbcode_text = "[center][wave]acentuação"
+text = "acentuação"
+fit_content_height = true
+
+[node name="LineEdit" type="LineEdit" parent="TabContainer/português/ScrollContainer2/VBoxContainer/HBoxContainer13"]
+margin_left = 1104.0
+margin_right = 1215.0
+margin_bottom = 99.0
+rect_min_size = Vector2( 111, 0 )
+custom_constants/minimum_spaces = 1
+align = 1
+max_length = 2
+expand_to_text_length = true
+virtual_keyboard_type = 2
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+placeholder_text = "0"
+caret_blink = true
+script = ExtResource( 4 )
+
+[node name="HBoxContainer14" type="HBoxContainer" parent="TabContainer/português/ScrollContainer2/VBoxContainer"]
+margin_top = 1270.0
+margin_right = 1215.0
+margin_bottom = 1369.0
+alignment = 1
+
+[node name="Label6" type="RichTextLabel" parent="TabContainer/português/ScrollContainer2/VBoxContainer/HBoxContainer14"]
+margin_right = 1100.0
+margin_bottom = 99.0
+rect_min_size = Vector2( 1100, 0 )
+rect_clip_content = false
+bbcode_enabled = true
+bbcode_text = "[center][wave]singular e plural"
+text = "singular e plural"
+fit_content_height = true
+
+[node name="LineEdit" type="LineEdit" parent="TabContainer/português/ScrollContainer2/VBoxContainer/HBoxContainer14"]
+margin_left = 1104.0
+margin_right = 1215.0
+margin_bottom = 99.0
+rect_min_size = Vector2( 111, 0 )
+custom_constants/minimum_spaces = 1
+align = 1
+max_length = 2
+expand_to_text_length = true
+virtual_keyboard_type = 2
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+placeholder_text = "0"
+caret_blink = true
+script = ExtResource( 4 )
+
+[node name="HBoxContainer15" type="HBoxContainer" parent="TabContainer/português/ScrollContainer2/VBoxContainer"]
+margin_top = 1404.0
+margin_right = 1215.0
+margin_bottom = 1503.0
+alignment = 1
+
+[node name="Label6" type="RichTextLabel" parent="TabContainer/português/ScrollContainer2/VBoxContainer/HBoxContainer15"]
+margin_right = 1100.0
+margin_bottom = 99.0
+rect_min_size = Vector2( 1100, 0 )
+rect_clip_content = false
+bbcode_enabled = true
+bbcode_text = "[center][wave]masculino e feminino"
+text = "masculino e feminino"
+fit_content_height = true
+
+[node name="LineEdit" type="LineEdit" parent="TabContainer/português/ScrollContainer2/VBoxContainer/HBoxContainer15"]
+margin_left = 1104.0
+margin_right = 1215.0
+margin_bottom = 99.0
+rect_min_size = Vector2( 111, 0 )
+custom_constants/minimum_spaces = 1
+align = 1
+max_length = 2
+expand_to_text_length = true
+virtual_keyboard_type = 2
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+placeholder_text = "0"
+caret_blink = true
+script = ExtResource( 4 )
+
+[node name="HBoxContainer16" type="HBoxContainer" parent="TabContainer/português/ScrollContainer2/VBoxContainer"]
+margin_top = 1538.0
+margin_right = 1215.0
+margin_bottom = 1637.0
+alignment = 1
+
+[node name="Label6" type="RichTextLabel" parent="TabContainer/português/ScrollContainer2/VBoxContainer/HBoxContainer16"]
+margin_right = 1100.0
+margin_bottom = 99.0
+rect_min_size = Vector2( 1100, 0 )
+rect_clip_content = false
+bbcode_enabled = true
+bbcode_text = "[center][wave]verbos"
+text = "verbos"
+fit_content_height = true
+
+[node name="LineEdit" type="LineEdit" parent="TabContainer/português/ScrollContainer2/VBoxContainer/HBoxContainer16"]
+margin_left = 1104.0
+margin_right = 1215.0
+margin_bottom = 99.0
+rect_min_size = Vector2( 111, 0 )
+custom_constants/minimum_spaces = 1
+align = 1
+max_length = 2
+expand_to_text_length = true
+virtual_keyboard_type = 2
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+placeholder_text = "0"
+caret_blink = true
+script = ExtResource( 4 )
+
+[node name="HBoxContainer17" type="HBoxContainer" parent="TabContainer/português/ScrollContainer2/VBoxContainer"]
+margin_top = 1672.0
+margin_right = 1215.0
+margin_bottom = 1771.0
+alignment = 1
+
+[node name="Label6" type="RichTextLabel" parent="TabContainer/português/ScrollContainer2/VBoxContainer/HBoxContainer17"]
+margin_right = 1100.0
+margin_bottom = 99.0
+rect_min_size = Vector2( 1100, 0 )
+rect_clip_content = false
+bbcode_enabled = true
+bbcode_text = "[center][wave]substantivos"
+text = "substantivos"
+fit_content_height = true
+
+[node name="LineEdit" type="LineEdit" parent="TabContainer/português/ScrollContainer2/VBoxContainer/HBoxContainer17"]
+margin_left = 1104.0
+margin_right = 1215.0
+margin_bottom = 99.0
+rect_min_size = Vector2( 111, 0 )
+custom_constants/minimum_spaces = 1
+align = 1
+max_length = 2
+expand_to_text_length = true
+virtual_keyboard_type = 2
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+placeholder_text = "0"
+caret_blink = true
+script = ExtResource( 4 )
+
+[node name="HBoxContainer18" type="HBoxContainer" parent="TabContainer/português/ScrollContainer2/VBoxContainer"]
+margin_top = 1806.0
+margin_right = 1215.0
+margin_bottom = 1905.0
+alignment = 1
+
+[node name="Label6" type="RichTextLabel" parent="TabContainer/português/ScrollContainer2/VBoxContainer/HBoxContainer18"]
+margin_right = 1100.0
+margin_bottom = 99.0
+rect_min_size = Vector2( 1100, 0 )
+rect_clip_content = false
+bbcode_enabled = true
+bbcode_text = "[center][wave]análise linguística"
+text = "análise linguística"
+fit_content_height = true
+
+[node name="LineEdit" type="LineEdit" parent="TabContainer/português/ScrollContainer2/VBoxContainer/HBoxContainer18"]
+margin_left = 1104.0
+margin_right = 1215.0
+margin_bottom = 99.0
+rect_min_size = Vector2( 111, 0 )
+custom_constants/minimum_spaces = 1
+align = 1
+max_length = 2
+expand_to_text_length = true
+virtual_keyboard_type = 2
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+placeholder_text = "0"
+caret_blink = true
+script = ExtResource( 4 )
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="."]
 modulate = Color( 1, 1, 1, 0 )

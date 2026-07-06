@@ -24,7 +24,7 @@ scroll_horizontal_enabled = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
 margin_right = 1200.0
-margin_bottom = 1923.0
+margin_bottom = 3744.0
 rect_min_size = Vector2( 1200, 0 )
 custom_constants/separation = -75
 alignment = 1
@@ -129,4 +129,184 @@ margin_bottom = 1923.0
 bbcode_enabled = true
 bbcode_text = "[wave][center]noção geométrica:"
 text = "noção geométrica:"
+fit_content_height = true
+
+[node name="port" type="RichTextLabel" parent="ScrollContainer/VBoxContainer"]
+margin_top = 1848.0
+margin_right = 1200.0
+margin_bottom = 2145.0
+bbcode_enabled = true
+bbcode_text = "[wave][center][rainbow]português
+"
+text = "português
+"
+fit_content_height = true
+
+[node name="Label6" type="RichTextLabel" parent="ScrollContainer/VBoxContainer"]
+margin_top = 2070.0
+margin_right = 1200.0
+margin_bottom = 2268.0
+rect_min_size = Vector2( 1100, 0 )
+rect_clip_content = false
+bbcode_enabled = true
+bbcode_text = "[center][wave]reconhecimento de letras:
+"
+text = "reconhecimento de letras:
+"
+fit_content_height = true
+
+[node name="Label7" type="RichTextLabel" parent="ScrollContainer/VBoxContainer"]
+margin_top = 2193.0
+margin_right = 1200.0
+margin_bottom = 2391.0
+rect_min_size = Vector2( 1100, 0 )
+rect_clip_content = false
+bbcode_enabled = true
+bbcode_text = "[center][wave]formação de palavras
+"
+text = "formação de palavras
+"
+fit_content_height = true
+
+[node name="Label8" type="RichTextLabel" parent="ScrollContainer/VBoxContainer"]
+margin_top = 2316.0
+margin_right = 1200.0
+margin_bottom = 2514.0
+rect_min_size = Vector2( 1100, 0 )
+rect_clip_content = false
+bbcode_enabled = true
+bbcode_text = "[center][wave]interpretação:
+"
+text = "interpretação:
+"
+fit_content_height = true
+
+[node name="Label9" type="RichTextLabel" parent="ScrollContainer/VBoxContainer"]
+margin_top = 2439.0
+margin_right = 1200.0
+margin_bottom = 2637.0
+rect_min_size = Vector2( 1100, 0 )
+rect_clip_content = false
+bbcode_enabled = true
+bbcode_text = "[center][wave]gramática básica:
+"
+text = "gramática básica:
+"
+fit_content_height = true
+
+[node name="Label10" type="RichTextLabel" parent="ScrollContainer/VBoxContainer"]
+margin_top = 2562.0
+margin_right = 1200.0
+margin_bottom = 2760.0
+rect_min_size = Vector2( 1100, 0 )
+rect_clip_content = false
+bbcode_enabled = true
+bbcode_text = "[center][wave]gêneros textuais
+"
+text = "gêneros textuais
+"
+fit_content_height = true
+
+[node name="Label11" type="RichTextLabel" parent="ScrollContainer/VBoxContainer"]
+margin_top = 2685.0
+margin_right = 1200.0
+margin_bottom = 2883.0
+rect_min_size = Vector2( 1100, 0 )
+rect_clip_content = false
+bbcode_enabled = true
+bbcode_text = "[center][wave]maiúsculas e minúsculas:
+"
+text = "maiúsculas e minúsculas:
+"
+fit_content_height = true
+
+[node name="Label12" type="RichTextLabel" parent="ScrollContainer/VBoxContainer"]
+margin_top = 2808.0
+margin_right = 1200.0
+margin_bottom = 3006.0
+rect_min_size = Vector2( 1100, 0 )
+rect_clip_content = false
+bbcode_enabled = true
+bbcode_text = "[center][wave]pontuação:
+"
+text = "pontuação:
+"
+fit_content_height = true
+
+[node name="Label13" type="RichTextLabel" parent="ScrollContainer/VBoxContainer"]
+margin_top = 2931.0
+margin_right = 1200.0
+margin_bottom = 3129.0
+rect_min_size = Vector2( 1100, 0 )
+rect_clip_content = false
+bbcode_enabled = true
+bbcode_text = "[center][wave]acentuação
+"
+text = "acentuação
+"
+fit_content_height = true
+
+[node name="Label14" type="RichTextLabel" parent="ScrollContainer/VBoxContainer"]
+margin_top = 3054.0
+margin_right = 1200.0
+margin_bottom = 3252.0
+rect_min_size = Vector2( 1100, 0 )
+rect_clip_content = false
+bbcode_enabled = true
+bbcode_text = "[center][wave]singular e plural
+"
+text = "singular e plural
+"
+fit_content_height = true
+
+[node name="Label15" type="RichTextLabel" parent="ScrollContainer/VBoxContainer"]
+margin_top = 3177.0
+margin_right = 1200.0
+margin_bottom = 3375.0
+rect_min_size = Vector2( 1100, 0 )
+rect_clip_content = false
+bbcode_enabled = true
+bbcode_text = "[center][wave]masculino e feminino
+"
+text = "masculino e feminino
+"
+fit_content_height = true
+
+[node name="Label16" type="RichTextLabel" parent="ScrollContainer/VBoxContainer"]
+margin_top = 3300.0
+margin_right = 1200.0
+margin_bottom = 3498.0
+rect_min_size = Vector2( 1100, 0 )
+rect_clip_content = false
+bbcode_enabled = true
+bbcode_text = "[center][wave]verbos
+"
+text = "verbos
+"
+fit_content_height = true
+
+[node name="Label17" type="RichTextLabel" parent="ScrollContainer/VBoxContainer"]
+margin_top = 3423.0
+margin_right = 1200.0
+margin_bottom = 3621.0
+rect_min_size = Vector2( 1100, 0 )
+rect_clip_content = false
+bbcode_enabled = true
+bbcode_text = "[center][wave]substantivos
+"
+text = "substantivos
+"
+fit_content_height = true
+
+[node name="Label18" type="RichTextLabel" parent="ScrollContainer/VBoxContainer"]
+margin_top = 3546.0
+margin_right = 1200.0
+margin_bottom = 3744.0
+rect_min_size = Vector2( 1100, 0 )
+rect_clip_content = false
+bbcode_enabled = true
+bbcode_text = "[center][wave]análise linguística
+"
+text = "análise linguística
+"
 fit_content_height = true

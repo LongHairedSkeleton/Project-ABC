@@ -11,6 +11,20 @@ onready var spacial_geometry = $"TabContainer/Matemática/ScrollContainer/VBoxCo
 onready var drawing = $"TabContainer/Matemática/ScrollContainer/VBoxContainer/HBoxContainer8/LineEdit"
 onready var spacial_notion = $"TabContainer/Matemática/ScrollContainer/VBoxContainer/HBoxContainer9/LineEdit"
 
+onready var rec_letras  =   $"TabContainer/português/ScrollContainer2/VBoxContainer/HBoxContainer6/LineEdit"
+onready var juntar_letras =$"TabContainer/português/ScrollContainer2/VBoxContainer/HBoxContainer7/LineEdit"
+onready var interpretacao =$"TabContainer/português/ScrollContainer2/VBoxContainer/HBoxContainer8/LineEdit"
+onready var escrita_correta =$"TabContainer/português/ScrollContainer2/VBoxContainer/HBoxContainer9/LineEdit"
+onready var generos =$"TabContainer/português/ScrollContainer2/VBoxContainer/HBoxContainer10/LineEdit"
+onready var maiuscula_minus =$"TabContainer/português/ScrollContainer2/VBoxContainer/HBoxContainer11/LineEdit"
+onready var pontuacao =$"TabContainer/português/ScrollContainer2/VBoxContainer/HBoxContainer12/LineEdit"
+onready var acentos  =$"TabContainer/português/ScrollContainer2/VBoxContainer/HBoxContainer13/LineEdit"
+onready var singular_plural =$"TabContainer/português/ScrollContainer2/VBoxContainer/HBoxContainer14/LineEdit"
+onready var genero_gramatical =$"TabContainer/português/ScrollContainer2/VBoxContainer/HBoxContainer15/LineEdit"
+onready var verbos =$"TabContainer/português/ScrollContainer2/VBoxContainer/HBoxContainer16/LineEdit"
+onready var substantivos =$"TabContainer/português/ScrollContainer2/VBoxContainer/HBoxContainer17/LineEdit"
+onready var analise_ling =$"TabContainer/português/ScrollContainer2/VBoxContainer/HBoxContainer18/LineEdit"
+
 func _on_Button_pressed():
 	Lan.host_classroom()
 	
@@ -24,7 +38,21 @@ func _on_Button_pressed():
 		"division_in_equal_parts": int(division_in_equal_parts.text),
 		"spacial_geometry": int(spacial_geometry.text),
 		"drawing": int(drawing.text),
-		"spacial_notion": int(spacial_notion.text)
+		"spacial_notion": int(spacial_notion.text),
+		
+		"rec_letras": int(rec_letras.text),
+		"juntar_letras": int(juntar_letras.text),
+		"interpretacao": int(interpretacao.text),
+		"escrita_correta": int(escrita_correta.text),
+		"generos": int(generos.text),
+		"maiuscula_minus": int(maiuscula_minus.text),
+		"pontuacao": int(pontuacao.text),
+		"acentos": int(acentos.text),
+		"singular_plural": int(singular_plural.text),
+		"genero_gramatical": int(genero_gramatical.text),
+		"verbos": int(verbos.text),
+		"substantivos": int(substantivos.text),
+		"analise_ling": int(analise_ling.text),
 	}
 	if "Save" in self or has_node("/root/Save"):
 		Save.lectures = lecture_data
