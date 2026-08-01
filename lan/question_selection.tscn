@@ -940,4 +940,12 @@ text = "seu código é:
 "
 fit_content_height = true
 
+[node name="Go Back" type="Button" parent="."]
+margin_left = 19.0
+margin_top = 20.0
+margin_right = 109.0
+margin_bottom = 118.0
+text = " X "
+
 [connection signal="pressed" from="TabContainer/Matemática/ScrollContainer/VBoxContainer/Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="Go Back" to="." method="_on_Go_Back_pressed"]

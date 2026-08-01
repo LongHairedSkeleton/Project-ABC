@@ -1,7 +1,7 @@
 extends Control
 
 func _ready():
-	$ScrollContainer/VBoxContainer/RichTextLabel2.bbcode_text = "[wave][center]ALUNO ganhou " + "[rainbow]" + str(Save.points) + " pontos"
+	$ScrollContainer/VBoxContainer/RichTextLabel2.bbcode_text = "[wave][center]" + str(PlayerVars.player_data["player_name"]) + " ganhou " + "[rainbow]" + str(Save.points) + " pontos"
 
 	# Puxamos as lições diretamente do histórico da rede caso o Save falhe
 	var lectures = Lan.current_lecture if not Lan.current_lecture.empty() else Save.lectures

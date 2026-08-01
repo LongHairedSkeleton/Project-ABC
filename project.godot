@@ -45,6 +45,7 @@ config/windows_native_icon="res://game_icon.ico"
 Save="*res://save.gd"
 Lan="*res://lan/networkmanager.gd"
 Inputs="*res://inputs.gd"
+PlayerVars="*res://account/player_vars.gd"
 
 [display]
 

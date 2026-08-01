@@ -17,3 +17,6 @@ func _on_Button_pressed():
 func _input(event):
 	if event.is_action_pressed("enter"):
 		$Node/Button.emit_signal("pressed")
+
+func _on_Solo_Button_pressed():
+	pass #

@@ -95,5 +95,17 @@ autoplay = "startup"
 anims/RESET = SubResource( 1 )
 anims/startup = SubResource( 2 )
 
+[node name="Solo Button" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -240.0
+margin_top = 560.0
+margin_right = 238.0
+margin_bottom = 658.0
+text = "  solo run  "
+
 [connection signal="text_changed" from="Node/LineEdit" to="Node/LineEdit" method="_on_LineEdit_text_changed"]
 [connection signal="pressed" from="Node/Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="Solo Button" to="." method="_on_Solo_Button_pressed"]

@@ -61,3 +61,6 @@ func _on_Button_pressed():
 	
 	$AnimationPlayer.play("fade out")
 	$RichTextLabel2.bbcode_text = "[center][wave]seu código é: [/wave][tornado]" + Lan.get_classroom_ip() + "[/tornado][/center]"
+
+func _on_Go_Back_pressed():
+	get_tree().change_scene("res://account/account_main_scene.tscn")
