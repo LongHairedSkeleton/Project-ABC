@@ -33,6 +33,7 @@ margin_top = -74.0
 margin_right = 331.0
 margin_bottom = 75.0
 align = 1
+max_length = 8
 placeholder_text = "clique aqui"
 
 [node name="Button" type="Button" parent="."]

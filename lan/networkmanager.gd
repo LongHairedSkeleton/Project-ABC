@@ -8,10 +8,16 @@ signal lecture_received
 
 func _ready():
 	get_tree().connect("network_peer_connected", self, "_on_peer_connected")
+	get_tree().connect("connected_to_server", self, "_on_connected_to_server")
+
+func _on_connected_to_server():
+	print("Conexão WebSocket estabelecida com o Host!")
+
+# No seu Lan Singleton
 
 func host_classroom():
-	# This opens a WebSocket server. Works on Desktop only!
 	peer = WebSocketServer.new()
+	# O terceiro parâmetro 'true' ativa o modo de compatibilidade com Multiplex/HighLevel do Godot
 	var error = peer.listen(DEFAULT_PORT, PoolStringArray(), true)
 	if error != OK:
 		print("Failed to host WebSocket server: ", error)
@@ -19,8 +25,17 @@ func host_classroom():
 	get_tree().network_peer = peer
 	print("Classroom hosted via WebSockets on port ", DEFAULT_PORT)
 
+# Certifique-se de que a palavra "remote" está escrita corretamente
+remote func _repassar_ao_professor(player_name, is_teacher):
+	var nodes = get_tree().get_nodes_in_group("vbox_professor")
+	
+	if nodes.size() > 0:
+		var vbox = nodes[0] # IMPORTANTE: Pegamos o primeiro elemento do array retornado pelo grupo
+		vbox.receive_puppet_data(player_name, is_teacher)
+	else:
+		print("Erro de sincronia: O VBoxContainer do professor não foi encontrado em nenhum nó ativo.")
+
 func join_classroom(ip_address):
-	# This connects a client. Works on BOTH Browser and Desktop!
 	peer = WebSocketClient.new()
 	var url = "ws://" + ip_address + ":" + str(DEFAULT_PORT)
 	
@@ -31,12 +46,12 @@ func join_classroom(ip_address):
 	get_tree().network_peer = peer
 	print("Connecting to teacher via WebSocket at ", url)
 
+# Quando um aluno se conecta, o Host envia a aula individualmente para ele
 func _on_peer_connected(id):
 	if get_tree().is_network_server() and not current_lecture.empty():
 		rpc_id(id, "receive_lecture", current_lecture)
 
 func get_classroom_ip() -> String:
-	# Browsers can't access local network cards, so hide this logic from them
 	if OS.has_feature("JavaScript"):
 		return "Run on Desktop to Host"
 		
@@ -52,12 +67,13 @@ func get_classroom_ip() -> String:
 			return ip
 			
 	return "No LAN Connection"
+
 func send_lecture_to_students(lecture_data):
 	current_lecture = lecture_data
 	rpc("receive_lecture", lecture_data)
-	Save.lectures = lecture_data # Acesso direto sem checagem desnecessária
+	Save.lectures = lecture_data
 
 remotesync func receive_lecture(lecture_data):
 	current_lecture = lecture_data
-	Save.lectures = lecture_data # Garante que o Aluno salve os dados localmente
+	Save.lectures = lecture_data
 	emit_signal("lecture_received")

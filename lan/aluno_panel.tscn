@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.0470588, 0.901961, 0.94902, 1 )
+corner_radius_top_left = 80
+corner_radius_top_right = 80
+corner_radius_bottom_right = 80
+corner_radius_bottom_left = 80
+
+[node name="PanelContainer" type="PanelContainer"]
+margin_top = 4.0
+margin_right = 890.0
+margin_bottom = 412.0
+rect_min_size = Vector2( 0, 408 )
+custom_styles/panel = SubResource( 1 )
+
+[node name="Label" type="RichTextLabel" parent="."]
+margin_right = 890.0
+margin_bottom = 408.0
+custom_colors/default_color = Color( 0, 0.596078, 0.858824, 1 )
+bbcode_enabled = true
+bbcode_text = "          ALUNO EM:
+ ADIÇAO/SUBTRAÇAO
+
+            ERROS:4"
+text = "          ALUNO EM:
+ ADIÇAO/SUBTRAÇAO
+
+            ERROS:4"
