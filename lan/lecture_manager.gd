@@ -31,7 +31,11 @@ var playlist = []
 var current_scene_node = null
 
 func _ready():
-	generate_playlist(Lan.current_lecture)
+	Save.solo_run = 0
+	
+	var active_lecture = Lan.current_lecture if not Lan.current_lecture.empty() else Save.lectures
+	
+	generate_playlist(active_lecture)
 	load_next_task()
 	print(playlist)
 

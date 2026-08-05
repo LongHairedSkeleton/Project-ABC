@@ -30,6 +30,8 @@ func receive_puppet_data(player_name, is_teacher):
 	print("Professor recebeu o aluno: ", player_name)
 	atualizar_lista_visual()
 
+onready var label = $RichTextLabel
+
 func atualizar_lista_visual():
 	# Limpa os painéis antigos para não duplicar na tela
 	for child in get_children():

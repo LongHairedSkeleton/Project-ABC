@@ -148,6 +148,16 @@ autoplay = "FDE IN"
 anims/RESET = SubResource( 1 )
 "anims/fade out" = SubResource( 2 )
 
+[node name="Control" parent="." instance=ExtResource( 5 )]
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.0
+margin_left = -454.0
+margin_top = -4.0
+margin_right = 446.0
+margin_bottom = 1436.0
+
 [node name="TabContainer" type="TabContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -172,7 +182,7 @@ scroll_horizontal_enabled = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Matemática/ScrollContainer"]
 margin_right = 1226.0
-margin_bottom = 2166.0
+margin_bottom = 2228.0
 custom_constants/separation = 35
 alignment = 1
 
@@ -374,6 +384,7 @@ geometria
 fit_content_height = true
 
 [node name="HBoxContainer6" type="HBoxContainer" parent="TabContainer/Matemática/ScrollContainer/VBoxContainer"]
+visible = false
 margin_top = 1433.0
 margin_right = 1226.0
 margin_bottom = 1532.0
@@ -407,9 +418,9 @@ caret_blink = true
 script = ExtResource( 4 )
 
 [node name="HBoxContainer7" type="HBoxContainer" parent="TabContainer/Matemática/ScrollContainer/VBoxContainer"]
-margin_top = 1567.0
+margin_top = 1433.0
 margin_right = 1226.0
-margin_bottom = 1666.0
+margin_bottom = 1532.0
 alignment = 1
 
 [node name="Label6" type="RichTextLabel" parent="TabContainer/Matemática/ScrollContainer/VBoxContainer/HBoxContainer7"]
@@ -440,9 +451,9 @@ caret_blink = true
 script = ExtResource( 4 )
 
 [node name="HBoxContainer8" type="HBoxContainer" parent="TabContainer/Matemática/ScrollContainer/VBoxContainer"]
-margin_top = 1701.0
+margin_top = 1567.0
 margin_right = 1226.0
-margin_bottom = 1899.0
+margin_bottom = 1765.0
 alignment = 1
 
 [node name="Label6" type="RichTextLabel" parent="TabContainer/Matemática/ScrollContainer/VBoxContainer/HBoxContainer8"]
@@ -473,9 +484,9 @@ caret_blink = true
 script = ExtResource( 4 )
 
 [node name="HBoxContainer9" type="HBoxContainer" parent="TabContainer/Matemática/ScrollContainer/VBoxContainer"]
-margin_top = 1934.0
+margin_top = 1800.0
 margin_right = 1226.0
-margin_bottom = 2033.0
+margin_bottom = 1899.0
 alignment = 1
 
 [node name="Label6" type="RichTextLabel" parent="TabContainer/Matemática/ScrollContainer/VBoxContainer/HBoxContainer9"]
@@ -506,10 +517,12 @@ caret_blink = true
 script = ExtResource( 4 )
 
 [node name="Button" type="Button" parent="TabContainer/Matemática/ScrollContainer/VBoxContainer"]
-margin_top = 2068.0
+margin_top = 1934.0
 margin_right = 1226.0
-margin_bottom = 2166.0
-text = "criar"
+margin_bottom = 2228.0
+text = "
+criar
+"
 
 [node name="português" type="Tabs" parent="TabContainer"]
 visible = false
@@ -530,7 +543,7 @@ margin_bottom = 666.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/português/ScrollContainer2"]
 margin_right = 1215.0
-margin_bottom = 1905.0
+margin_bottom = 2234.0
 custom_constants/separation = 35
 
 [node name="HBoxContainer6" type="HBoxContainer" parent="TabContainer/português/ScrollContainer2/VBoxContainer"]
@@ -948,15 +961,12 @@ placeholder_text = "0"
 caret_blink = true
 script = ExtResource( 4 )
 
-[node name="Control" parent="." instance=ExtResource( 5 )]
-modulate = Color( 1, 1, 1, 0 )
-anchor_left = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.0
-margin_left = -1358.0
-margin_top = -8.0
-margin_right = -458.0
-margin_bottom = 1432.0
+[node name="Button" type="Button" parent="TabContainer/português/ScrollContainer2/VBoxContainer"]
+margin_right = 40.0
+margin_bottom = 98.0
+text = "
+criar
+"
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="."]
 modulate = Color( 1, 1, 1, 0 )
@@ -964,10 +974,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -365.0
-margin_top = -99.0
-margin_right = 365.0
-margin_bottom = 99.0
+margin_left = -1257.0
+margin_top = -79.0
+margin_right = -527.0
+margin_bottom = 119.0
 bbcode_enabled = true
 bbcode_text = "[center][wave]seu código é:
 "
@@ -983,4 +993,5 @@ margin_bottom = 118.0
 text = " X "
 
 [connection signal="pressed" from="TabContainer/Matemática/ScrollContainer/VBoxContainer/Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="TabContainer/português/ScrollContainer2/VBoxContainer/Button" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="Go Back" to="." method="_on_Go_Back_pressed"]

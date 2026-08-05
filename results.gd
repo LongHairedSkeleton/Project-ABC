@@ -1,6 +1,9 @@
 extends Control
 
 func _ready():
+	PlayerVars.player_data["max_points"] = Save.points
+	PlayerVars.save_game_data()
+	
 	$ScrollContainer/VBoxContainer/RichTextLabel2.bbcode_text = "[wave][center]" + str(PlayerVars.player_data["player_name"]) + " ganhou " + "[rainbow]" + str(Save.points) + " pontos"
 
 	# Puxamos as lições diretamente do histórico da rede caso o Save falhe
@@ -43,3 +46,30 @@ func _ready():
 			label_node.bbcode_text += " [color=red](Erros: " + str(mistake_count) + ")[/color]"
 		else:
 			label_node.hide()
+
+func _on_Button_pressed():
+	get_tree().change_scene("res://account/account_main_scene.tscn")
+
+
+func _on_Button2_pressed():
+	var reinforcement_lecture = {}
+	
+	# Percorre todos os erros registrados pelo aluno
+	for subject in Save.mistakes.keys():
+		var count = Save.mistakes[subject]
+		# Se houver pelo menos 1 erro na matéria, adicionamos ao reforço
+		if count > 0:
+			# Define quantas questões de reforço serão geradas (ex: a mesma quantidade de erros)
+			reinforcement_lecture[subject] = count
+
+	# Caso o aluno tenha cometido erros, iniciamos a aula de reforço
+	if not reinforcement_lecture.empty():
+		# Atualiza as lições no Singleton da rede e no Save
+		Lan.current_lecture = reinforcement_lecture
+		Save.lectures = reinforcement_lecture
+		
+		# Limpa os erros antigos para a nova rodada
+		Save.mistakes.clear()
+		
+		# Troca para a cena do gerenciador de lições para começar o treino
+		get_tree().change_scene("res://lan/lecture_manager.tscn")

@@ -27,3 +27,14 @@ func _on_Button2_pressed():
 			PlayerVars.player_data["teacher"] = true
 			PlayerVars.save_game_data()
 	get_tree().change_scene("res://account/settings.tscn")
+
+
+func _on_Button3_pressed():
+	PlayerVars.player_data = {
+	"first_time": true,
+	"player_name": "",
+	"max_points": 0,
+	"teacher": false
+}
+	PlayerVars.save_game_data()
+	get_tree().change_scene("res://lan/inicial_screen.tscn")

@@ -8,6 +8,8 @@ func _ready():
 	
 	# 2. Escuta a confirmação real da rede WebSocket dizendo: "Você está conectado!"
 	get_tree().connect("connected_to_server", self, "_on_network_connected")
+	if OS.get_name() == "HTML5":
+		$Auto.hide()
 
 func _start_lecture():
 	# O Aluno muda para a cena onde vai resolver as tarefas dele
@@ -32,5 +34,15 @@ func _input(event):
 	if event.is_action_pressed("enter"):
 		$Node/Button.emit_signal("pressed")
 
-func _on_Solo_Button_pressed():
-	pass
+func _on_Auto_pressed():
+	var target_ip = Lan.get_classroom_ip()
+	
+	# Valida se o IP retornado é válido antes de tentar conectar
+	if target_ip == "Run on Desktop to Host" or target_ip == "No LAN Connection":
+		print("Não foi possível detectar o IP automaticamente.")
+		return
+		
+	Lan.join_classroom(target_ip)
+
+func _on_X_pressed():
+	get_tree().change_scene("res://account/account_main_scene.tscn")

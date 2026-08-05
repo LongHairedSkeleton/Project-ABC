@@ -70,3 +70,37 @@ func _on_Button_pressed():
 
 func _on_Go_Back_pressed():
 	get_tree().change_scene("res://account/account_main_scene.tscn")
+
+func reset_all_inputs_to_one():
+	var all_inputs = [
+		addition_subtraction_input, times_division, problems, times, conversion,
+		division_in_equal_parts, spacial_geometry, drawing, spacial_notion,
+		rec_letras, juntar_letras, interpretacao, escrita_correta, generos,
+		maiuscula_minus, pontuacao, acentos, singular_plural, genero_gramatical,
+		verbos, substantivos, analise_ling
+	]
+	
+	for input in all_inputs:
+		if input:
+			input.text = "1"
+
+func _ready():
+	if Save.solo_run == 1:
+		reset_all_inputs_to_one()
+		_on_Button_pressed()
+		#yield(get_tree().create_timer(0.1),"timeout")
+		
+		var full_text = $RichTextLabel2.bbcode_text
+		var target_phrase = "[center][wave]seu código é:"
+
+		var start_index = full_text.find(target_phrase)
+
+		if start_index != -1:
+	# Calculate the index right after the phrase
+			var code_index = start_index + target_phrase.length()
+	
+	# Extract the IP code, stripping any accidental extra spaces
+			var ip_code = full_text.substr(code_index).strip_edges()
+		
+			Lan.join_classroom(ip_code)
+			get_tree().change_scene("res://lan/lecture_manager.tscn")
