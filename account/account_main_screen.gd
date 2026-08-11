@@ -61,7 +61,6 @@ const ALL_SUBJECTS = [
 	"problems",
 	"spacial_geometry",
 	"drawing",
-	"spacial_notion",
 	"rec_letras",
 	"juntar_letras",
 	"interpretacao",

@@ -47,4 +47,16 @@ margin_right = 293.5
 margin_bottom = 203.0
 text = "   confirmar   "
 
+[node name="Button2" type="Button" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -433.5
+margin_top = -98.0
+margin_right = 433.5
+text = "  sugestão: walter  "
+
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_Button2_pressed"]

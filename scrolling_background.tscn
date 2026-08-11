@@ -7,8 +7,8 @@
 shader = ExtResource( 1 )
 shader_param/texture_size = Vector2( 150, 150 )
 shader_param/largura_balanco = 70.0
-shader_param/velocidade_balanco = 2.0
-shader_param/velocidade_descida = 100.0
+shader_param/velocidade_balanco = 1.25
+shader_param/velocidade_descida = 50.0
 
 [node name="CanvasLayer" type="CanvasLayer"]
 layer = -1

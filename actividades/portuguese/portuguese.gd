@@ -399,8 +399,23 @@ func check_if_correct(label):
 		$Control2.get_points(int(rand_range(-750, -500)))
 		var wrong_instance = wrong.instance()
 		
-		# Define o assunto do erro baseado na categoria atual
-		var current_subject = "Português"
+		# Identifica o assunto dinamicamente com base no problem_type atual
+		var current_subject = "Unknown"
+		match problem_type:
+			types.rec_letras: current_subject = "rec_letras"
+			types.juntar_letras: current_subject = "juntar_letras"
+			types.interpretacao: current_subject = "interpretacao"
+			types.escrita_correta: current_subject = "escrita_correta"
+			types.generos: current_subject = "generos"
+			types.maiuscula_minus: current_subject = "maiuscula_minus"
+			types.pontuacao: current_subject = "pontuacao"
+			types.acentos: current_subject = "acentos"
+			types.singular_plural: current_subject = "singular_plural"
+			types.genero_gramatical: current_subject = "genero_gramatical"
+			types.verbos: current_subject = "verbos"
+			types.substantivos: current_subject = "substantivos"
+			types.analise_ling: current_subject = "analise_ling"
+		
 		wrong_instance.current_exercise = current_subject
 		add_child(wrong_instance)
 
