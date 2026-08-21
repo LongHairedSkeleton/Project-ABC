@@ -6,7 +6,7 @@ func _ready():
 			$Button.text = "+ clique aqui\n pra criar\n uma sala"
 		false:
 			$Button.text = "clique aqui\n para entrar\n numa sala"
-
+	$RichTextLabel4.bbcode_text = "[center][wave]bem vindo\n" + PlayerVars.player_data["player_name"] + "!!"
 func _on_TextureButton_pressed():
 	get_tree().change_scene("res://account/settings.tscn")
 

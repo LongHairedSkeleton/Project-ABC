@@ -236,3 +236,6 @@ func _on_Button_pressed(): check_if_correct($Button)
 func _on_Button2_pressed(): check_if_correct($Button2)
 func _on_Button3_pressed(): check_if_correct($Button3)
 func _on_Button4_pressed(): check_if_correct($Button4)
+
+func _on_Button5_pressed():
+	TTS.speak(str($Panel/Label.text))
