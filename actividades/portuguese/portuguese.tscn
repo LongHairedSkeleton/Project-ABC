@@ -33,40 +33,40 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -346.0
-margin_top = 164.0
-margin_right = -2.0
-margin_bottom = 290.0
+margin_left = -585.5
+margin_top = 152.0
+margin_right = 600.5
+margin_bottom = 266.0
 
 [node name="Button2" type="Button" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 14.5
-margin_top = 166.0
-margin_right = 359.5
-margin_bottom = 288.0
+margin_left = -581.5
+margin_top = 290.0
+margin_right = 596.5
+margin_bottom = 408.0
 
 [node name="Button3" type="Button" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -350.5
-margin_top = 318.0
-margin_right = 12.5
-margin_bottom = 452.0
+margin_left = -582.5
+margin_top = 442.0
+margin_right = 607.5
+margin_bottom = 552.0
 
 [node name="Button4" type="Button" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 27.5
-margin_top = 328.0
-margin_right = 371.5
-margin_bottom = 457.0
+margin_left = -576.5
+margin_top = 588.0
+margin_right = 600.5
+margin_bottom = 693.0
 
 [node name="Panel" type="PanelContainer" parent="."]
 anchor_left = 0.5
@@ -100,10 +100,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -36.5
-margin_top = 484.0
-margin_right = 69.5
-margin_bottom = 596.0
+margin_left = -556.5
+margin_top = -284.0
+margin_right = -450.5
+margin_bottom = -168.0
 text = "f"
 
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

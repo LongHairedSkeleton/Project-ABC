@@ -164,6 +164,20 @@ walter!"
 text = "bem vindo
 walter!"
 
+[node name="RichTextLabel5" type="RichTextLabel" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 448.0
+margin_top = -183.0
+margin_right = 1290.0
+margin_bottom = 213.0
+bbcode_enabled = true
+bbcode_text = "[wave][center]clique o botão do mouse direito sobre um texto para ouvir!"
+text = "clique o botão do mouse direito sobre um texto para ouvir!"
+fit_content_height = true
+
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="TextureButton" to="." method="_on_TextureButton_pressed"]
 [connection signal="pressed" from="Button2" to="." method="_on_Button2_pressed"]

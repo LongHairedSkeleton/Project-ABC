@@ -47,6 +47,7 @@ Lan="*res://lan/networkmanager.gd"
 Inputs="*res://inputs.gd"
 PlayerVars="*res://account/player_vars.gd"
 TTS="*res://tts.gd"
+Globaltext2Tts="*res://globaltext2tts.gd"
 
 [display]
 
