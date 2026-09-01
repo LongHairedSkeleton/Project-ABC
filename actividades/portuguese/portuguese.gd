@@ -94,19 +94,18 @@ func _obter_banco_questoes() -> Dictionary:
 		{"pergunta": "Se juntarmos G + A + T + O, formamos:", "correta": "GATO", "alternativas": ["GATO", "RATO", "MATO", "GADO"]},
 		{"pergunta": "Qual palavra se forma com 'BA' + 'NA' + 'NA'?", "correta": "BANANA", "alternativas": ["BANANA", "BAU", "BONÉ", "BANA"]},
 		{"pergunta": "Se juntarmos R + E + I, formamos:", "correta": "REI", "alternativas": ["REI", "RIO", "RUA", "RÉU"]},
-		{"pergunta": "Qual palavra se forma com 'JA' + 'RE' + 'CO'?", "correta": "JACARÉ", "alternativas": ["JACARÉ", "JANELA", "CORAÇÃO", "JARRA"]},
+		{"pergunta": "Qual palavra se forma com 'JA' + 'CA' + 'RÉ'?", "correta": "JACARÉ", "alternativas": ["JACARÉ", "JANELA", "CORAÇÃO", "JARRA"]},
 		{"pergunta": "Se juntarmos S + O + L, formamos:", "correta": "SOL", "alternativas": ["SOL", "SUL", "SAL", "SO"]},
 		{"pergunta": "Qual palavra se forma com 'PE' + 'TE' + 'CA'?", "correta": "PETECA", "alternativas": ["PETECA", "PANELA", "PIPOCA", "PATO"]},
 		{"pergunta": "Se juntarmos L + I + V + R + O, formamos:", "correta": "LIVRO", "alternativas": ["LIVRO", "LIVRE", "LAVRA", "LINO"]},
 		{"pergunta": "Qual palavra se forma com 'BO' + 'NE' + 'CA'?", "correta": "BONECA", "alternativas": ["BONECA", "BONÉ", "BALA", "CANECA"]},
 		{"pergunta": "Se juntarmos U + V + A, formamos:", "correta": "UVA", "alternativas": ["UVA", "OVO", "AVE", "UMA"]},
-		{"pergunta": "Qual palavra se forma com 'ME' + 'LI' + 'NA'?", "correta": "MENINA", "alternativas": ["MENINA", "MENINO", "MALA", "MINA"]},
+		{"pergunta": "Qual palavra se forma com 'ME' + 'NI' + 'NA'?", "correta": "MENINA", "alternativas": ["MENINA", "MENINO", "MALA", "MINA"]},
 		{"pergunta": "Se juntarmos R + A + T + O, formamos:", "correta": "RATO", "alternativas": ["RATO", "GATO", "PATO", "ROTA"]},
 		{"pergunta": "Qual palavra se forma com 'CA' + 'NE' + 'TA'?", "correta": "CANETA", "alternativas": ["CANETA", "CANECA", "CASA", "CAMA"]},
 		{"pergunta": "Se juntarmos M + E + S + A, formamos:", "correta": "MESA", "alternativas": ["MESA", "MISSA", "MEIO", "MASSA"]},
-		{"pergunta": "Qual palavra se forma com 'TI' + 'G0' + 'RE'?", "correta": "TIGRE", "alternativas": ["TIGRE", "TIJOLO", "TIME", "GATO"]}
+		{"pergunta": "Qual palavra se forma com 'TI' + 'GRE'?", "correta": "TIGRE", "alternativas": ["TIGRE", "TIJOLO", "TIME", "GATO"]}
 	]
-	
 
 	banco[types.interpretacao] = [
 		{"pergunta": "'O gato Mimi subiu no telhado e miou alto.' Quem subiu no telhado?", "correta": "O gato Mimi", "alternativas": ["O gato Mimi", "O cachorro", "O passarinho", "O rato"]},
@@ -234,27 +233,27 @@ func _obter_banco_questoes() -> Dictionary:
 	
 
 	banco[types.acentos] = [
-		{"pergunta": "Qual palavra precisa do acento circunflexo (^)?", "correta": "Vovô", "alternativas": ["Vovô", "Café", "Pé", "Água"]},
-		{"pergunta": "Qual palavra usa o acento agudo (´) na letra A?", "correta": "Água", "alternativas": ["Água", "Cama", "Mala", "Casa"]},
+		{"pergunta": "Qual palavra precisa do acento circunflexo?", "correta": "Vovô", "alternativas": ["Vovô", "Café", "Pé", "Água"]},
+		{"pergunta": "Qual palavra usa o acento agudo na letra A?", "correta": "Água", "alternativas": ["Água", "Cama", "Mala", "Casa"]},
 		{"pergunta": "Qual palavra tem o som do 'vovó' (aberto, com acento agudo)?", "correta": "Café", "alternativas": ["Café", "Você", "Bênção", "Ônibus"]},
-		{"pergunta": "O sinal do tio (~) serve para deixar o som:", "correta": "Nasal (pelo nariz)", "alternativas": ["Nasal (pelo nariz)", "Muito forte", "Fraco", "Mudo"]},
-		{"pergunta": "Qual palavra precisa do acento do tio (~)?", "correta": "Avião", "alternativas": ["Avião", "Bola", "Dado", "Pato"]},
-		{"pergunta": "Qual palavra usa o acento circunflexo (^) na letra O?", "correta": "Ônibus", "alternativas": ["Ônibus", "Óculos", "Copo", "Porta"]},
-		{"pergunta": "Qual palavra precisa de acento agudo (´)?", "correta": "Picolé", "alternativas": ["Picolé", "Menino", "Mesa", "Caderno"]},
-		{"pergunta": "Qual é o acento da palavra 'VOCÊ'?", "correta": "Circunflexo (^)", "alternativas": ["Circunflexo (^)", "Agudo (´)", "Tio (~)", "Nenhum"]},
-		{"pergunta": "Qual palavra tem o sinal do Tio (~)?", "correta": "Maçã", "alternativas": ["Maçã", "Pé", "Vovô", "Gato"]},
+		{"pergunta": "O sinal do tio serve para deixar o som:", "correta": "Nasal (pelo nariz)", "alternativas": ["Nasal (pelo nariz)", "Muito forte", "Fraco", "Mudo"]},
+		{"pergunta": "Qual palavra precisa do acento do tio?", "correta": "Avião", "alternativas": ["Avião", "Bola", "Dado", "Pato"]},
+		{"pergunta": "Qual palavra usa o acento circunflexo na letra O?", "correta": "Ônibus", "alternativas": ["Ônibus", "Óculos", "Copo", "Porta"]},
+		{"pergunta": "Qual palavra precisa de acento agudo?", "correta": "Picolé", "alternativas": ["Picolé", "Menino", "Mesa", "Caderno"]},
+		{"pergunta": "Qual é o acento da palavra 'VOCÊ'?", "correta": "Circunflexo", "alternativas": ["Circunflexo", "Agudo", "Tio", "Nenhum"]},
+		{"pergunta": "Qual palavra tem o sinal do Tio?", "correta": "Maçã", "alternativas": ["Maçã", "Pé", "Vovô", "Gato"]},
 		{"pergunta": "Qual palavra precisa de acento na letra U?", "correta": "Baú", "alternativas": ["Baú", "Uva", "Urubu", "Um"]},
-		{"pergunta": "O acento agudo (´) deixa o som da vogal:", "correta": "Aberto", "alternativas": ["Aberto", "Fechado", "Nasal", "Sumiu"]},
-		{"pergunta": "O acento circunflexo (^) deixa o som da vogal:", "correta": "Fechado", "alternativas": ["Fechado", "Aberto", "Longo", "Mudo"]},
+		{"pergunta": "O acento agudo deixa o som da vogal:", "correta": "Aberto", "alternativas": ["Aberto", "Fechado", "Nasal", "Sumiu"]},
+		{"pergunta": "O acento circunflexo deixa o som da vogal:", "correta": "Fechado", "alternativas": ["Fechado", "Aberto", "Longo", "Mudo"]},
 		{"pergunta": "Qual palavra está acentuada CORRETAMENTE?", "correta": "Árvore", "alternativas": ["Árvore", "Arvorê", "Arvôre", "Arvore"]},
-		{"pergunta": "Qual palavra precisa de acento agudo (´) na letra O?", "correta": "Óculos", "alternativas": ["Óculos", "Vovô", "Bolo", "Ovo"]},
-		{"pergunta": "Qual palavra tem o acento do tio (~)?", "correta": "Sabão", "alternativas": ["Sabão", "Sopa", "Sapato", "Sino"]},
+		{"pergunta": "Qual palavra precisa de acento agudo na letra O?", "correta": "Óculos", "alternativas": ["Óculos", "Vovô", "Bolo", "Ovo"]},
+		{"pergunta": "Qual palavra tem o acento do tio?", "correta": "Sabão", "alternativas": ["Sabão", "Sopa", "Sapato", "Sino"]},
 		{"pergunta": "Qual palavra precisa de acento na letra E?", "correta": "Jacaré", "alternativas": ["Jacaré", "Escola", "Estojo", "Elefante"]},
-		{"pergunta": "Qual palavra usa o acento circunflexo (^)?", "correta": "Três", "alternativas": ["Três", "Pé", "Chá", "Lá"]},
-		{"pergunta": "Qual palavra leva acento agudo (´) na letra I?", "correta": "Lápis", "alternativas": ["Lápis", "Livro", "Igreja", "Ilha"]},
-		{"pergunta": "Qual o acento correto para a palavra 'PÁSSARO'?", "correta": "Agudo (´)", "alternativas": ["Agudo (´)", "Circunflexo (^)", "Tio (~)", "Nenhum"]},
+		{"pergunta": "Qual palavra usa o acento circunflexo?", "correta": "Três", "alternativas": ["Três", "Pé", "Chá", "Lá"]},
+		{"pergunta": "Qual palavra leva acento agudo na letra A?", "correta": "Lápis", "alternativas": ["Lápis", "Livro", "Igreja", "Ilha"]},
+		{"pergunta": "Qual o acento correto para a palavra 'PÁSSARO'?", "correta": "Agudo", "alternativas": ["Agudo", "Circunflexo", "Tio", "Nenhum"]},
 		{"pergunta": "Qual palavra NÃO tem nenhum acento?", "correta": "Copo", "alternativas": ["Copo", "Café", "Vovô", "Maçã"]},
-		{"pergunta": "Qual palavra precisa do tio (~) no A?", "correta": "Mão", "alternativas": ["Mão", "Mala", "Mapa", "Mesa"]}
+		{"pergunta": "Qual palavra precisa do tio no A?", "correta": "Mão", "alternativas": ["Mão", "Mala", "Mapa", "Mesa"]}
 	]
 
 	banco[types.singular_plural] = [

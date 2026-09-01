@@ -60,7 +60,7 @@ func _ready():
 			if subject in portuguese_subjects:
 				erros_portugues += mistake_count
 		else:
-			botao_reforco.hide()
+			#botao_reforco.hide()
 			label_node.hide()
 			tet.hide()
 

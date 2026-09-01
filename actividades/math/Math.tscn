@@ -5,8 +5,7 @@
 [ext_resource path="res://points.tscn" type="PackedScene" id=3]
 
 [sub_resource type="StyleBoxFlat" id=5]
-bg_color = Color( 0.117647, 0.341176, 0.611765, 1 )
-draw_center = false
+bg_color = Color( 0.117647, 0.341176, 0.611765, 0.501961 )
 border_width_left = 18
 border_width_top = 18
 border_width_right = 18
@@ -33,10 +32,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -346.0
+margin_left = -406.5
 margin_top = 164.0
-margin_right = -2.0
-margin_bottom = 290.0
+margin_right = -1.5
+margin_bottom = 354.0
 
 [node name="Button2" type="Button" parent="."]
 anchor_left = 0.5
@@ -45,28 +44,28 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = 14.5
 margin_top = 166.0
-margin_right = 359.5
-margin_bottom = 288.0
+margin_right = 416.5
+margin_bottom = 352.0
 
 [node name="Button3" type="Button" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -350.5
-margin_top = 318.0
-margin_right = 12.5
-margin_bottom = 452.0
+margin_left = -400.5
+margin_top = 393.0
+margin_right = -1.5
+margin_bottom = 584.0
 
 [node name="Button4" type="Button" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 27.5
-margin_top = 328.0
-margin_right = 371.5
-margin_bottom = 457.0
+margin_left = 14.5
+margin_top = 394.0
+margin_right = 412.5
+margin_bottom = 581.0
 
 [node name="Panel" type="PanelContainer" parent="."]
 anchor_left = 0.5
@@ -95,19 +94,7 @@ fit_content_height = true
 
 [node name="Control2" parent="." instance=ExtResource( 3 )]
 
-[node name="Button5" type="Button" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -51.5
-margin_top = 488.0
-margin_right = 82.5
-margin_bottom = 624.0
-text = "F"
-
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="Button2" to="." method="_on_Button2_pressed"]
 [connection signal="pressed" from="Button3" to="." method="_on_Button3_pressed"]
 [connection signal="pressed" from="Button4" to="." method="_on_Button4_pressed"]
-[connection signal="pressed" from="Button5" to="." method="_on_Button5_pressed"]

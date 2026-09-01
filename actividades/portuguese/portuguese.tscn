@@ -37,6 +37,7 @@ margin_left = -585.5
 margin_top = 152.0
 margin_right = 600.5
 margin_bottom = 266.0
+clip_text = true
 
 [node name="Button2" type="Button" parent="."]
 anchor_left = 0.5

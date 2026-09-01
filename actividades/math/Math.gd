@@ -14,6 +14,9 @@ func _ready():
 	roll()
 	#if problem_type == types.problems or problem_type == types.conversion:
 		#$Label.rect_position.y = 50
+		
+	#temp solution:
+
 
 func roll():
 	var label1 = $Button
@@ -175,6 +178,10 @@ func roll():
 		var display_string = expression_string.replace("*", " x ").replace("/", " : ")
 		$Panel/Label.bbcode_text = "[wave][center]" + display_string
 
+		if display_string.count(":") == 2:
+			roll()
+			get_tree().change_scene("res://lan/lecture_manager.tscn")
+
 	if problem_type == types.times:
 		var valor_base = int(resultado_final) / amount_of_numbers 
 		
@@ -236,6 +243,3 @@ func _on_Button_pressed(): check_if_correct($Button)
 func _on_Button2_pressed(): check_if_correct($Button2)
 func _on_Button3_pressed(): check_if_correct($Button3)
 func _on_Button4_pressed(): check_if_correct($Button4)
-
-func _on_Button5_pressed():
-	TTS.speak(str($Panel/Label.text))
